@@ -37,6 +37,13 @@ public class OrokorrakEJB {
     public TaldeakE taldeaLortuDB(String izena) {
     	return em.find(TaldeakE.class,izena);
     }
+    public int taldeaEzabatuDB(String izena) {
+		int kodea=0; //Ondo ezabatu da
+		TaldeakE taldeaE=em.find(TaldeakE.class, izena);
+		if(taldeaE!=null) em.remove(taldeaE);
+		else kodea=1; //Irakasgai hori ez da existitzen DB-an
+		return kodea;
+	}
     public int taldePartaideaSartuDB(String username, Date jaiotzeData, String herrialdea, 
     		String taldeRola, String deskribapena, String taldeIzena) {
     	int kodea=0; //Ez da arazorik egon
@@ -63,6 +70,17 @@ public class OrokorrakEJB {
     public TaldePartaideakE taldePartaideaLortuDB(String username) {
     	return em.find(TaldePartaideakE.class,username);
     }
+    @SuppressWarnings("unchecked")
+	public List<TaldePartaideakE> taldePartaideakLortuDB(String taldeIzena){
+    	return (List<TaldePartaideakE>)em.createNamedQuery("TaldePartaideakE.findTaldePartaideak").setParameter("taldeIzena", taldeIzena).getResultList();
+    }
+    public int taldeaPartaideaEzabatuDB(String username) {
+		int kodea=0; //Ondo ezabatu da
+		TaldePartaideakE taldeaPartaideaE=em.find(TaldePartaideakE.class, username);
+		if(taldeaPartaideaE!=null) em.remove(taldeaPartaideaE);
+		else kodea=1; //Irakasgai hori ez da existitzen DB-an
+		return kodea;
+	}
     public int erabiltzaileaSartuDB(String username, String password, String izena, String abizena, 
     		boolean taldePartaide) {
     	int kodea=0; //Ez da arazorik egon
@@ -85,6 +103,13 @@ public class OrokorrakEJB {
     public ErabiltzaileakE erabiltzaileaLortuDB(String username) {
     	return em.find(ErabiltzaileakE.class, username);
     }
+    public int ErabiltzaileaEzabatuDB(String username) {
+		int kodea=0; //Ondo ezabatu da
+		ErabiltzaileakE erabiltzaileaE=em.find(ErabiltzaileakE.class, username);
+		if(erabiltzaileaE!=null) em.remove(erabiltzaileaE);
+		else kodea=1; //Irakasgai hori ez da existitzen DB-an
+		return kodea;
+	}
     @SuppressWarnings("unchecked")
 	public List<TaldeakE> taldeakBilatuDB(String izena,String herrialdea,String musikaMota, boolean bakarkakoa){
     	String query="SELECT t FROM TaldeakE t";
@@ -119,6 +144,10 @@ public class OrokorrakEJB {
     		query+=" t.musikaMota = '"+musikaMota+"'";
     	}
     	return (List<TaldeakE>) em.createQuery(query).getResultList();
+    }
+    @SuppressWarnings("unchecked")
+	public List<KontzertuakE> taldeKontzertuakLortuDB(String taldeIzena){
+    	return (List<KontzertuakE>) em.createNamedQuery("KontzertuakE.findByTalde").setParameter("taldeIzena", taldeIzena).getResultList();
     }
     @SuppressWarnings("unchecked")
 	public List<TaldeakE> modaLortuDB(){
