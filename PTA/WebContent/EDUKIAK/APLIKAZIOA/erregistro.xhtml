@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+	<ui:define  name="Izenburua">LOGINA ORRIA</ui:define>
+	<ui:define name="Edukia">
+	<form action="./index.xhtml">
+		<input type="submit" id="submit" value="ATZERA BUELTATU" />
+	</form>
+	<hr />
+	<h:form rendered="#{erabiltzaileFormMB.erabiltzailemota!=2}">
+			ERABILTZAILE MOTA: 
+			<h:selectOneMenu id="erabiltzailemota" value="#{erabiltzaileFormMB.erabiltzailemota}">
+				<f:selectItem itemLabel="Erabiltzaile arrunta"  itemValue="1" />
+				<f:selectItem itemLabel="Partaidea eta taldea sortu"  itemValue="2"/>
+				<f:selectItem itemLabel="Partaidea eta taldean sartu"  itemValue="3" />
+			</h:selectOneMenu>
+			ERABILTZAILEA:
+			<h:inputText id="erabiltzailea" value="#{erabiltzaileFormMB.erabiltzailea}" required="true" requiredMessage="ERROREA: erabiltzailea derrigorrezkoa da" /> <h:message for="erabiltzailea" style="color:blue" /><br />
+			PASAHITZA:
+			<h:inputText id="pasahitza" value="#{erabiltzaileFormMB.pasahitza}" required="true" requiredMessage="ERROREA: pasahitza derrigorrezkoa da" /> <h:message for="pasahitza" style="color:blue" /><br />
+			IZENA:
+			<h:inputText id="izena" value="#{erabiltzaileFormMB.izena}" required="true" requiredMessage="ERROREA: izena derrigorrezkoa da" /> <h:message for="izena" style="color:blue" /><br />
+			ABIZENA:
+			<h:inputText id="abizena" value="#{erabiltzaileFormMB.abizena}" required="true" requiredMessage="ERROREA: abizena derrigorrezkoa da" /> <h:message for="abizena" style="color:blue" /><br />
+			DESKRIBAPEN-PERSONALA:
+			<h:inputTextarea id="deskribapena" value="#{erabiltzaileFormMB.deskribapena}" required="true" requiredMessage="ERROREA: deskribapena derrigorrezkoa da" /> <h:message for="deskribapena" style="color:blue" /><br />
+			<h:commandButton action="sarreraorria" actionListener="#{erregistratuAtazakMB.erabiltzaileaSartu(erabiltzeFormMB)}" type="submit" value="ERABILTZAILE ARRUNTA" />
+			<h:commandButton actionListener="#{erregistratuAtazakMB.erabiltzaileaFormMantendu(erabiltzaileFormMB)}" value="PARTAIDEA" />
+		</h:form>	
+			
+			
+			<h:form rendered="#{erabiltzaileFormMB.erabiltzailemota==2}">	
+			<h3>PARTAIDEAREN DATU PERTSONALAK</h3>
+
+				JAIOTZE-DATA:
+				<h:inputText id="jaiotzedata" value="#{talderikGabeFormMB.jaiotzedata}" required="true" requiredMessage="ERROREA: jaiotzedata derrigorrezkoa da" > 
+				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
+				</h:inputText><h:message for="jaiotzedata" style="color:blue" /><br />
+				HERRIALDEA:
+				<h:inputText id="herrialdea" value="#{talderikGabeFormMB.herrialdea}" required="true" requiredMessage="ERROREA: herrialdea derrigorrezkoa da" /> <h:message for="herrialdea" style="color:blue" /><br />
+				TALDE-ROLA:
+				<h:inputText id="rola" value="#{talderikGabeFormMB.rola}" required="true" requiredMessage="ERROREA: rola derrigorrezkoa da" /> <h:message for="rola" style="color:blue" /><br />
+				
+				<h3>TALDE BERRIAREN DATUAK</h3>
+				TALDE-IZENA:
+				<h:inputText id="taldea" value="#{talderikGabeFormMB.taldea}" required="true" requiredMessage="ERROREA: talde izena derrigorrezkoa da" /> <h:message for="taldea" style="color:blue" /><br />
+				TALDE-PASAHITZA:
+				<h:inputText id="pasahitzataldea" value="#{talderikGabeFormMB.pasahitzataldea}" required="true" requiredMessage="ERROREA: taldearen pasahitza derrigorrezkoa da" /> <h:message for="pasahitzataldea" style="color:blue" /><br />
+				TALDEAREN-DESKIRBAPENA:
+				<h:inputTextarea id="taldedeskribapena" value="#{talderikGabeFormMB.taldedeskribapena}" required="true" requiredMessage="ERROREA: taldearen-deskribapena derrigorrezkoa da" /> <h:message for="taldedeskribapena" style="color:blue" /><br />
+				TALDEAREN-HERRIALDEA:
+				<h:inputTextarea id="taldeherrialdea" value="#{talderikGabeFormMB.taldeherrialdea}" required="true" requiredMessage="ERROREA: taldearen herrialdea derrigorrezkoa da" /> <h:message for="taldeherrialdea" style="color:blue" /><br />
+				MUSIKA-MOTA:
+				<h:selectOneMenu id="musikamota" value="#{talderikGabeFormMB.musikamota}">
+				<f:selectItem itemLabel="rap"  itemValue="rap" />
+				<f:selectItem itemLabel="pop"  itemValue="pop"/>
+				<f:selectItem itemLabel="klasikoa"  itemValue="klasikoa" />
+				<f:selectItem itemLabel="regetoia"  itemValue="regetoia" />
+				<f:selectItem itemLabel="rock"  itemValue="rock" />
+				</h:selectOneMenu>
+				WEBGUNE-LINK:
+				<h:inputTextarea id="link" value="#{talderikGabeFormMB.link}" required="true" requiredMessage="ERROREA: webgunearen linka herrialdea derrigorrezkoa da" /> <h:message for="link" style="color:blue" /><br />
+				BAKARKOA ZARA?
+				<h:selectOneListbox id="bakarkakoa" value="#{talderikGabeFormMB.bakarkakoa}">
+				<f:selectItem itemLabel="Bai"  itemValue="Bai" />
+				<f:selectItem itemLabel="Ez"  itemValue="Ez"/>
+				</h:selectOneListbox>
+				<h:commandButton action="sarreraorria" actionListener="#{erregistratuAtazakMB.partaideaSartuTaldeaSortu(talderikGabeFormMB)}" type="submit" value="ERREGISTRATU" />
+				</h:form>
+
+			
+			
+			
+			<h:panelGroup rendered="#{erabiltzaileFormMB.erabiltzailemota==3}">
+				<h:form>
+			<h3>PARTAIDEAREN DATU PERTSONALAK</h3>
+				JAIOTZE-DATA:
+				<h:inputText id="jaiotzedata1" value="#{taldearekinFormMB.jaiotzedata}" required="true" requiredMessage="ERROREA: jaiotzedata derrigorrezkoa da" > 
+				<f:convertDateTime pattern="yyyy/MM/dd HH:mm" timeZone="CET"/>
+				</h:inputText><h:message for="jaoitzedata" style="color:blue" /><br />
+				HERRIALDEA:
+				<h:inputText id="herrialdea1" value="#{taldearekinFormMB.herrialdea}" required="true" requiredMessage="ERROREA: herrialdea derrigorrezkoa da" /> <h:message for="herrialdea1" style="color:blue" /><br />
+				TALDE-ROLA:
+				<h:inputText id="rola1" value="#{taldearekinFormMB.rola}" required="true" requiredMessage="ERROREA: rola derrigorrezkoa da" /> <h:message for="rola1" style="color:blue" /><br />
+				<h3>TALDEAREN LOGINA</h3>
+				TALDE-IZENA:
+				<h:inputText id="taldeizena" value="#{taldearekinFormMB.taldeizena}" required="true" requiredMessage="ERROREA: taldearen izena derrigorrezkoa da" /> <h:message for="taldeizena" style="color:blue" /><br />
+				TALDE-PASAHITZA:
+				<h:inputText id="taldepasahitza" value="#{taldearekinFormMB.taldepasahitza}" required="true" requiredMessage="ERROREA: taldearen pasahitza derrigorrezkoa da" /> <h:message for="taldepasahitza" style="color:blue" /><br />
+				<h:commandButton action="sarreraorria" actionListener="#{erregistratuAtazakMB.partaideaSartuTaldeanSartu(taldearekinFormMB)}" type="submit" value="ERREGISTRATU" />
+				</h:form>
+			</h:panelGroup>
+	
+	</ui:define>
+</ui:composition>
+</html>
