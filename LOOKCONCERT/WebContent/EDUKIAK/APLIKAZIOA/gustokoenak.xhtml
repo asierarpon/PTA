@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define  name="Izenburua">ZURE GUSTOKO TALDEAK</ui:define>
+	<ui:define name="Edukia">
+			<form action="./sarreraorria.xhtml">
+		<input type="submit" id="sarreraorria" value="SARRERA ORRIA" />
+	</form>
+		<form action="./filtroak.xhtml">
+		<input type="submit" id="filtroak" value="FILTROAK" />
+	</form>
+		<hr />
+	<h2>HAUEK DIRA ZURE GUSTUKO TALDEAK</h2>
+		<h:dataTable value="#{erabiltzaileakViewMB.gustokoenakLortuDB(erabiltzaileAtazakMB.autentikatutakoa)}" var="gustokoenak" border="2"> 
+			<h:column>
+					<f:facet name="header">TALDEAREN IZENA</f:facet>
+				#{gustokoenak.izena}
+			</h:column>
+			<h:column>
+				<f:facet name="header">MUSIkA MOTA</f:facet>
+				#{gustokoenak.musikaMota}
+			</h:column>
+
+	</h:dataTable>
+	</ui:define>
+	</ui:composition>
+</html>

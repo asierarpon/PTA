@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define  name="Izenburua">MODAKO TALDEAK</ui:define>
+	<ui:define name="Edukia">
+		<form action="./filtroak.xhtml">
+		<input type="submit" id="filtroak" value="FILTROAK" />
+	</form>
+		<form action="./gustokoenak.xhtml">
+		<input type="submit" id="gsutokoenak" value="GUSTOKOENAK" />
+	</form>
+	<h:panelGroup rendered="">
+	<form action="./taldekoinformazioa.xhtml">
+		<input type="submit" id="aldatu" value="TALDEKO INFOMAZIOA ALDATU" />
+	</form>
+	</h:panelGroup>
+		<hr />
+	<h2>HAUEK DIRA GAUR EGUN MODAN DAUDEN TALDEAK</h2>
+		<h:dataTable value="#{erabiltzaileakViewMB.modakoakLortuDB()}" var="moda" border="2"> 
+			<h:column>
+					<f:facet name="header">TALDEAREN IZENA</f:facet>
+				#{moda.izena}
+			</h:column>
+			<h:column>
+				<f:facet name="header">MUSIkA MOTA</f:facet>
+				#{moda.musikaMota}
+			</h:column>
+
+	</h:dataTable>
+	</ui:define>
+</ui:composition>
+</html>

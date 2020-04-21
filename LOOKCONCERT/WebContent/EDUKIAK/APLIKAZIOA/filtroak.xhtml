@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define  name="Izenburua">BILATU ZURE TALDEAK</ui:define>
+	<ui:define name="Edukia">
+		<form action="./sarreraorria.xhtml">
+		<input type="submit" id="sarreraorria" value="SARRERAKO ORRIA" />
+	</form>
+		<form action="./gustokoenak.xhtml">
+		<input type="submit" id="gustokoenak" value="GUSTOKOENAK" />
+	</form>
+		<hr />
+	<h:form>
+	<h2>SARTU ZURE FILTROAK</h2>
+	
+	TALDE-IZENA:
+	<h:inputText id="taldea" value="#{filtroakFormMB.izena}" /><br />
+	TALDEAREN-HERRIALDEA:
+	<h:inputText id="taldeherrialdea" value="#{filtroakFormMB.herrialdea}"  /><br />
+	MUSIKA-MOTA:
+	<h:selectOneMenu id="musikamota" value="#{filtroakFormMB.musikamota}">
+	<f:selectItem itemLabel="None"  itemValue="None" />
+	<f:selectItem itemLabel="rap"  itemValue="rap" />
+	<f:selectItem itemLabel="pop"  itemValue="pop"/>
+	<f:selectItem itemLabel="klasikoa"  itemValue="klasikoa" />
+	<f:selectItem itemLabel="regetoia"  itemValue="regetoia" />
+	<f:selectItem itemLabel="rock"  itemValue="rock" />
+	</h:selectOneMenu><br />
+	BAKARKOA?
+	<h:selectOneListbox id="bakarkakoa" value="#{filtroakFormMB.bakarkoa}">
+	<f:selectItem itemLabel="none"  itemValue="none" />
+	<f:selectItem itemLabel="Bai"  itemValue="Bai" />
+	<f:selectItem itemLabel="Ez"  itemValue="Ez"/>
+	</h:selectOneListbox><br />
+	<h:commandButton actionListener="#{erabiltzaileakViewMB.filtroakDB(filtroakFormMB)}" value="APLIKATU" />
+	
+	
+	
+	
+	</h:form>
+		<h2>AURKITUTAKO TALDEAK</h2>
+		<h:dataTable value="#{erabiltzaileakViewMB.filtratutakoakBilatuDB(filtroakFormMB)}" var="aurkitutakoa" border="2"> 
+			<h:column>
+					<f:facet name="header">TALDEAREN IZENA</f:facet>
+				#{aurkitutakoa.izena}
+			</h:column>
+			<h:column>
+				<f:facet name="header">MUSIKA MOTA</f:facet>
+				#{aurkitutakoa.musikaMota}
+			</h:column>
+
+	</h:dataTable>
+	</ui:define>
+	</ui:composition>
+</html>
