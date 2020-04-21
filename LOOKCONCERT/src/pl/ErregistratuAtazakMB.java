@@ -45,11 +45,10 @@ public class ErregistratuAtazakMB implements Serializable {
 		{
 			partaide=false;
 			kodea=aEJB.erabiltzaileaSartuDB(e.getErabiltzailea(),e.getPasahitza(),e.getIzena(),e.getAbizena(),partaide);
-
 			if(kodea==2)
 			{
 			mezua="Aldatu erabiltzaile izena, erabiltzaile hori jadanik hartuta dago";
-
+			buelta="erregistro.xhtml";
 			}
 			else
 			{
@@ -78,15 +77,30 @@ public class ErregistratuAtazakMB implements Serializable {
 		{
 			bakarkakoa=true;
 		}
-		System.out.println("Kodea lehen: "+kodea);
-		kodea=aEJB.taldeaSartuDB(t.getTaldea(),t.getTaldedeskribapena(),t.getTaldeherrialdea(),t.getMusikamota(),bakarkakoa,t.getLink(),t.getPasahitzataldea());
-		System.out.println("Kodea ondoren: "+kodea);		
+
+		kodea=aEJB.taldeaSartuDB(t.getTaldea(),t.getTaldedeskribapena(),t.getTaldeherrialdea(),t.getMusikamota(),bakarkakoa,t.getLink(),t.getPasahitzataldea());		
 		if(kodea==0)
-		{
-			buelta="sarreraorria.xhtml";
-			
-			aEJB.taldePartaideaSartuDB(erabiltzailea.getErabiltzailea(),t.getJaiotzedata(),t.getHerrialdea(),t.getRola(), t.getDeskribapena(),t.getTaldea());
-			aEJB.erabiltzaileaSartuDB(erabiltzailea.getErabiltzailea(),erabiltzailea.getPasahitza(),erabiltzailea.getIzena(),erabiltzailea.getAbizena(),partaide);		
+		{	
+			kodea=aEJB.taldePartaideaSartuDB(erabiltzailea.getErabiltzailea(),t.getJaiotzedata(),t.getHerrialdea(),t.getRola(), t.getDeskribapena(),t.getTaldea());
+			if(kodea!=0)
+			{
+				aEJB.taldeaEzabatuDB(t.getTaldea());
+				buelta="erregistro.xhtml";
+			}
+			else
+			{
+				kodea=aEJB.erabiltzaileaSartuDB(erabiltzailea.getErabiltzailea(),erabiltzailea.getPasahitza(),erabiltzailea.getIzena(),erabiltzailea.getAbizena(),bakarkakoa);
+				if(kodea==2)
+				{
+					buelta="erregistro.xhtml";
+					aEJB.taldeaPartaideaEzabatuDB(erabiltzailea.getErabiltzailea());
+				}
+				else
+				{
+					buelta="sarreraorria.xhtml";
+				}
+			}
+					
 		}
 		else
 		{
@@ -95,12 +109,41 @@ public class ErregistratuAtazakMB implements Serializable {
 		}
 		return buelta;
 	}
-	public void partaideaSartuTaldeanSartu(TaldearekinFormMB t)
+	public String partaideaSartuTaldeanSartu(TaldearekinFormMB t)
 	{
 		boolean partaidea1=true;
-		//FALTA COMPROBAR SI EL TALDE ESTA BIEN
-		aEJB.taldePartaideaSartuDB(erabiltzailea.getErabiltzailea(),t.getJaiotzedata(),t.getHerrialdea(),t.getRola(),t.getDeskribapenaerab(),t.getTaldeizena(),t.getTaldepasahitza());
-		aEJB.erabiltzaileaSartuDB(erabiltzailea.getErabiltzailea(),erabiltzailea.getPasahitza(),erabiltzailea.getIzena(),erabiltzailea.getAbizena(),partaidea1);
+		kodea=aEJB.taldePartaideaSartuDB(erabiltzailea.getErabiltzailea(),t.getJaiotzedata(),t.getHerrialdea(),t.getRola(),t.getDeskribapenaerab(),t.getTaldeizena(),t.getTaldepasahitza());
+		if(kodea!=0)
+		{
+			switch(kodea)
+			{
+				case 1:
+					mezua="Ez dago talderik izen horrekin";
+					kodea=7;
+					break;
+				case 2:
+					mezua="Jadanik existitzen da partaide bat izen horrekin";
+					kodea=8;
+				case 3:
+					mezua="Pasahitza ez da zuzena";
+					kodea=9;
+			}
+			buelta="erregistro.xhtml";
+		}
+		else
+		{
+			kodea=aEJB.erabiltzaileaSartuDB(erabiltzailea.getErabiltzailea(),erabiltzailea.getPasahitza(),erabiltzailea.getIzena(),erabiltzailea.getAbizena(),partaidea1);
+			if(kodea==2)
+			{
+				buelta="erregistro.xhtml";
+				aEJB.taldeaPartaideaEzabatuDB(erabiltzailea.getErabiltzailea());
+			}
+			else
+			{
+				buelta="sarreraorria.xhtml";
+			}
+		}
+		return buelta;
 	}
 	
 	

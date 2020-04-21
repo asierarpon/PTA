@@ -89,7 +89,7 @@
 			<h3>PARTAIDEAREN DATU PERTSONALAK</h3>
 				JAIOTZE-DATA:
 				<h:inputText id="jaiotzedata1" value="#{taldearekinFormMB.jaiotzedata}" required="true" requiredMessage="ERROREA: jaiotzedata derrigorrezkoa da" > 
-				<f:convertDateTime pattern="yyyy/MM/dd HH:mm" timeZone="CET"/>
+				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
 				</h:inputText><h:message for="jaoitzedata" style="color:blue" /><br />
 				HERRIALDEA:
 				<h:inputText id="herrialdea1" value="#{taldearekinFormMB.herrialdea}" required="true" requiredMessage="ERROREA: herrialdea derrigorrezkoa da" /> <h:message for="herrialdea1" style="color:blue" /><br />
@@ -103,7 +103,7 @@
 				<h:inputText id="taldeizena" value="#{taldearekinFormMB.taldeizena}" required="true" requiredMessage="ERROREA: taldearen izena derrigorrezkoa da" /> <h:message for="taldeizena" style="color:blue" /><br />
 				TALDE-PASAHITZA:
 				<h:inputText id="taldepasahitza" value="#{taldearekinFormMB.taldepasahitza}" required="true" requiredMessage="ERROREA: taldearen pasahitza derrigorrezkoa da" /> <h:message for="taldepasahitza" style="color:blue" /><br />
-				<h:commandButton action="sarreraorria" actionListener="#{erregistratuAtazakMB.partaideaSartuTaldeanSartu(taldearekinFormMB)}" type="submit" value="ERREGISTRATU" />
+				<h:commandButton action="#{erregistratuAtazakMB.partaideaSartuTaldeanSartu(taldearekinFormMB)}" type="submit" value="ERREGISTRATU" />
 				</h:form>
 			</h:panelGroup>
 	
