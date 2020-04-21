@@ -37,12 +37,12 @@ public class ErabiltzaileakViewMB implements Serializable {
 		return modakoakDB;
 	}
 	
-	public List <TaldeakE> gustokoenakLortuDB(String erabiltzailea)
+	public List <TaldeakE> gustokoenakLortuDB()
 	{
 		
 		if(gustokoenakDB==null)
 		{
-			gustokoenakDB=aEJB.taldeGustokoenakLortuDB(erabiltzailea);
+			gustokoenakDB=aEJB.taldeGustokoenakLortuDB();
 		}
 		return gustokoenakDB;
 	}

@@ -37,6 +37,9 @@ public class OrokorrakEJB {
     public TaldeakE taldeaLortuDB(String izena) {
     	return em.find(TaldeakE.class,izena);
     }
+    public TaldeakE taldeaLortuPartaidetikDB(String username) {
+    	return (TaldeakE)em.createNamedQuery("TaldePartaideakE.findTaldea").setParameter("username", username).getSingleResult();
+    }
     public int taldeaEzabatuDB(String izena) {
 		int kodea=0; //Ondo ezabatu da
 		TaldeakE taldeaE=em.find(TaldeakE.class, izena);
@@ -70,10 +73,6 @@ public class OrokorrakEJB {
     public TaldePartaideakE taldePartaideaLortuDB(String username) {
     	return em.find(TaldePartaideakE.class,username);
     }
-    @SuppressWarnings("unchecked")
-	public List<TaldePartaideakE> taldePartaideakLortuDB(String taldeIzena){
-    	return (List<TaldePartaideakE>)em.createNamedQuery("TaldePartaideakE.findTaldePartaideak").setParameter("taldeIzena", taldeIzena).getResultList();
-    }
     public int taldeaPartaideaEzabatuDB(String username) {
 		int kodea=0; //Ondo ezabatu da
 		TaldePartaideakE taldeaPartaideaE=em.find(TaldePartaideakE.class, username);
@@ -103,7 +102,11 @@ public class OrokorrakEJB {
     public ErabiltzaileakE erabiltzaileaLortuDB(String username) {
     	return em.find(ErabiltzaileakE.class, username);
     }
-    public int ErabiltzaileaEzabatuDB(String username) {
+    @SuppressWarnings("unchecked")
+	public List<ErabiltzaileakE> taldeErabiltzaileakLortuDB(String taldeIzena){
+    	return (List<ErabiltzaileakE>)em.createNamedQuery("ErabiltzaileakE.findTaldeErabiltzaileak").setParameter("taldeIzena", taldeIzena).getResultList();
+    }
+    public int erabiltzaileaEzabatuDB(String username) {
 		int kodea=0; //Ondo ezabatu da
 		ErabiltzaileakE erabiltzaileaE=em.find(ErabiltzaileakE.class, username);
 		if(erabiltzaileaE!=null) em.remove(erabiltzaileaE);

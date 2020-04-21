@@ -13,7 +13,7 @@ import java.util.Date;
 @Table(name="TaldePartaideak")
 @NamedQueries({
 @NamedQuery(name="TaldePartaideakE.findAll", query="SELECT t FROM TaldePartaideakE t"),
-@NamedQuery(name="TaldePartaideakE.findTaldePartaideak", query="SELECT t FROM TaldePartaideakE t WHERE t.taldeakE.izena =:taldeIzena")
+@NamedQuery(name="TaldePartaideakE.findTaldea", query="SELECT t.taldeakE FROM TaldePartaideakE t WHERE t.username=:username")
 })
 public class TaldePartaideakE implements Serializable {
 	private static final long serialVersionUID = 1L;

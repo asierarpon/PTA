@@ -3,38 +3,46 @@ package bl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
+import javax.ejb.EJBContext;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.jboss.ejb3.annotation.SecurityDomain;
 
 import dl.*;
 
 /**
  * Session Bean implementation class ErabiltzaileaEJB
  */
+@SecurityDomain("PTA")
+@RolesAllowed("erabiltzailea")
 @Stateful
 @LocalBean
 public class ErabiltzaileaEJB {
 
 	@PersistenceContext
 	private EntityManager em;
+	@Resource
+	EJBContext ejbContext;
 	private ErabiltzaileakE erabiltzaileaE;
 	
     public ErabiltzaileaEJB() {
         // TODO Auto-generated constructor stub
     }
 
-    public int login(String username,String password) {
-    	int kodea=0; // username==password
+    @PostConstruct
+    private void login() {
+    	String username=ejbContext.getCallerPrincipal().getName();
     	erabiltzaileaE=em.find(ErabiltzaileakE.class,username);
-    	if(erabiltzaileaE==null) kodea=1; // username ez da existitzen
-    	else if(erabiltzaileaE.getPassword().compareTo(password)!=0) kodea=2; //username!=password
-    	return kodea;
     }
-    public List<TaldeakE> taldeGustokoenakLortuDB(String username){
+    public List<TaldeakE> taldeGustokoenakLortuDB(){
     	@SuppressWarnings("unchecked")
-		List<GustokoenakE> gustokoenakE = (List<GustokoenakE>)em.createNamedQuery("GustokoenakE.findErabiltzailkeak").setParameter("username",username).getResultList();
+		List<GustokoenakE> gustokoenakE = (List<GustokoenakE>)em.createNamedQuery("GustokoenakE.findErabiltzailkeak").setParameter("username",erabiltzaileaE.getUsername()).getResultList();
     	List<TaldeakE> taldeakE = new ArrayList<TaldeakE>();
     	for(int i=0;i<gustokoenakE.size();i++) {
     		taldeakE.add(gustokoenakE.get(i).getTaldeakE());
