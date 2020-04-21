@@ -11,15 +11,9 @@
 		<input type="submit"  value="ATZERA BUELTATU" />
 	</form>
 	<hr />
-	<h:panelGroup rendered="#{erregistratuAtazakMB.kodea==1}">
+	<h:panelGroup rendered="#{erregistratuAtazakMB.kodea!=0}">
 		<p>#{erregistratuAtazakMB.mezua}</p>
 		</h:panelGroup>
-		<h:panelGroup rendered="#{erregistratuAtazakMB.kodea==10}">
-		<p>#{erregistratuAtazakMB.mezua}</p>
-		</h:panelGroup>
-		<h:panelGroup rendered="#{erregistratuAtazakMB.kodea==2}">
-		<p>#{erregistratuAtazakMB.mezua}</p>
-		</h:panelGroup>	
 	<h:form rendered="#{erabiltzaileFormMB.erabiltzailemota!=2}">
 			ERABILTZAILE MOTA: 
 			<h:selectOneMenu id="erabiltzailemota" value="#{erabiltzaileFormMB.erabiltzailemota}">

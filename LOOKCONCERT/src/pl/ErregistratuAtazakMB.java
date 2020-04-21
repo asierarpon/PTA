@@ -47,8 +47,8 @@ public class ErregistratuAtazakMB implements Serializable {
 			kodea=aEJB.erabiltzaileaSartuDB(e.getErabiltzailea(),e.getPasahitza(),e.getIzena(),e.getAbizena(),partaide);
 			if(kodea==2)
 			{
-			mezua="Aldatu erabiltzaile izena, erabiltzaile hori jadanik hartuta dago";
-			buelta="erregistro.xhtml";
+				mezua="Aldatu erabiltzaile izena, erabiltzaile hori jadanik hartuta dago";
+				buelta="erregistro.xhtml";
 			}
 			else
 			{
@@ -58,7 +58,6 @@ public class ErregistratuAtazakMB implements Serializable {
 		}
 		else
 		{
-			kodea=10;
 			mezua="KONTUZZZZ!!Izan nahi duzun erabiltzaile mota txarto aukeratuta daukaz";
 			buelta="erregistro.xhtml";
 		}
@@ -84,6 +83,7 @@ public class ErregistratuAtazakMB implements Serializable {
 			kodea=aEJB.taldePartaideaSartuDB(erabiltzailea.getErabiltzailea(),t.getJaiotzedata(),t.getHerrialdea(),t.getRola(), t.getDeskribapena(),t.getTaldea());
 			if(kodea!=0)
 			{
+				mezua="Badago paratide bat izen horrekin";
 				aEJB.taldeaEzabatuDB(t.getTaldea());
 				buelta="erregistro.xhtml";
 			}
@@ -92,6 +92,7 @@ public class ErregistratuAtazakMB implements Serializable {
 				kodea=aEJB.erabiltzaileaSartuDB(erabiltzailea.getErabiltzailea(),erabiltzailea.getPasahitza(),erabiltzailea.getIzena(),erabiltzailea.getAbizena(),bakarkakoa);
 				if(kodea==2)
 				{
+					mezua="Badago erabiltzaile bat izen horrekin";
 					buelta="erregistro.xhtml";
 					aEJB.taldeaPartaideaEzabatuDB(erabiltzailea.getErabiltzailea());
 				}
@@ -99,8 +100,7 @@ public class ErregistratuAtazakMB implements Serializable {
 				{
 					buelta="sarreraorria.xhtml";
 				}
-			}
-					
+			}			
 		}
 		else
 		{
@@ -119,24 +119,22 @@ public class ErregistratuAtazakMB implements Serializable {
 			{
 				case 1:
 					mezua="Ez dago talderik izen horrekin";
-					kodea=7;
 					break;
 				case 2:
 					mezua="Jadanik existitzen da partaide bat izen horrekin";
-					kodea=8;
 				case 3:
 					mezua="Pasahitza ez da zuzena";
-					kodea=9;
 			}
 			buelta="erregistro.xhtml";
 		}
 		else
 		{
 			kodea=aEJB.erabiltzaileaSartuDB(erabiltzailea.getErabiltzailea(),erabiltzailea.getPasahitza(),erabiltzailea.getIzena(),erabiltzailea.getAbizena(),partaidea1);
-			if(kodea==2)
+			if(kodea!=0)
 			{
 				buelta="erregistro.xhtml";
 				aEJB.taldeaPartaideaEzabatuDB(erabiltzailea.getErabiltzailea());
+				mezua="Jadanik erabiltzaile da partaide bat izen horrekin";
 			}
 			else
 			{
@@ -144,7 +142,5 @@ public class ErregistratuAtazakMB implements Serializable {
 			}
 		}
 		return buelta;
-	}
-	
-	
+	}	
 }
