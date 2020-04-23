@@ -49,4 +49,15 @@ public class ErabiltzaileaEJB {
     	}
     	return taldeakE;
     }
+    @SuppressWarnings("unchecked")
+	public List<KontzertuakE> kontzertuakLortuDB(){
+    	return (List<KontzertuakE>)em.createNamedQuery("KontzertuakE.findByPartaide").setParameter("username", erabiltzaileaE.getUsername()).getResultList();
+    }
+    public int kontzertuaEzabatuDB(int id) {
+		int kodea=0; //Ondo ezabatu da
+		KontzertuakE kontzertuakE=em.find(KontzertuakE.class, id);
+		if(kontzertuakE!=null) em.remove(kontzertuakE);
+		else kodea=1; //Irakasgai hori ez da existitzen DB-an
+		return kodea;
+	}
 }
