@@ -7,13 +7,13 @@
 	<ui:composition template="../TXANT/txantiloia.xhtml">
 	<ui:define  name="Izenburua">TALDEAREN INFORMAZIOA</ui:define>
 	<ui:define name="Edukia">
-	<form action="./gustokoenak.xhtml">
+	<form action="./sarreraorria.xhtml">
 		<input type="submit" id="atzera" value="ATZERA" />
 	</form>
 	
 	
 	<h2>"#{taldeaViewMB.taldeIzena}"</h2> 
-		<h:dataTable value="#{taldeaViewMB.informazioaLortuDB(taldeaViewMB.taldeIzena)}" var="taldea" border="2"> 
+		<h:dataTable value="#{taldeaViewMB.informazioaLortuDB()}" var="taldea" border="2"> 
 			<h:column>
 				<f:facet name="header">TALDEAREN IZENA</f:facet>
 				#{taldea.izena}
@@ -37,7 +37,7 @@
 			<h:column>
 			<f:facet name="header">ESTEKA</f:facet>
 			<h:form rendered="#{taldea.webOrria!=null}">
-				<h:commandButton actionListener="#{taldea.webOrria}" value="JOAN WEBGUNERA" />
+				<h:commandButton actionListener="#{taldea.webOrria}" type="submit" value="JOAN WEBGUNERA" />
 			</h:form>
 			</h:column>
 
@@ -45,7 +45,7 @@
 	
 	
 	<h2>KONTZERTUAK</h2>
-		<h:dataTable value="#{taldeaViewMB.kontzertuakLortu(taldeaViewMB.taldeIzena)}" var="kontzertua" border="2"> 
+		<h:dataTable value="#{taldeaViewMB.kontzertuakLortu()}" var="kontzertua" border="2"> 
 			
 			<h:column>
 				<f:facet name="header">TKONTZERTUAREN ID</f:facet>
@@ -70,7 +70,7 @@
 			<h:column>
 			<f:facet name="header">SARRERA EROSI</f:facet>
 			<h:form rendered="#{kontzertua.sarreraEsteka!=null}">
-				<h:commandButton actionListener="#{kontzertua.sarreraEsteka}" value="SARRERA EROSI" />
+				<h:commandButton actionListener="#{kontzertua.sarreraEsteka}"  type="submit" value="SARRERA EROSI" />
 			</h:form>
 			</h:column>
 
@@ -79,7 +79,7 @@
 	
 		
 	<h2>PARTAIDEAK</h2>
-		<h:dataTable value="#{taldeaViewMB.taldePartaideakLortu(taldeaViewMB.taldeIzena)}" var="partaideak" border="2"> 
+		<h:dataTable value="#{taldeaViewMB.taldePartaideakLortu()}" var="partaideak" border="2"> 
 			
 			<h:column>
 				<f:facet name="header">PARTAIDEAREN IZENA</f:facet>
@@ -88,7 +88,7 @@
 			<h:column>
 			<f:facet name="header">PARTAIDEA IKUSI</f:facet>
 			<h:form >
-				<h:commandButton actionListener="#{taldeaViewMB.klikatutakoTaldekideaGorde(partaideak.izena)}" action="./partaidea.xhtml" value="PARTAIDEA IKUSI" />
+				<h:commandButton actionListener="#{taldeaViewMB.klikatutakoTaldekideaGorde(partaideak.izena)}" action="partaidea.xhtml" type="submit" value="PARTAIDEA IKUSI" />
 			</h:form>
 			</h:column>
 

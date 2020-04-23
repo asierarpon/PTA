@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import bl.OrokorrakEJB;
@@ -15,7 +15,7 @@ import dl.TaldeakE;
 
 
 @Named
-@ViewScoped
+@SessionScoped
 public class TaldeaViewMB implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -83,9 +83,9 @@ public class TaldeaViewMB implements Serializable {
 		
 	}
 
-	public TaldeakE informazioaLortuDB(String izena){
+	public TaldeakE informazioaLortuDB(){
 		
-		taldea=zEJB.taldeaLortuDB(izena);
+		taldea=zEJB.taldeaLortuDB(taldeIzena);
 		
 		
 		if(taldea.getBakarkakoa()==true) {
@@ -97,31 +97,33 @@ public class TaldeaViewMB implements Serializable {
 		return taldea;
 	}
 	
-	public List<KontzertuakE> kontzertuakLortu(String izena){
+	public List<KontzertuakE> kontzertuakLortu(){
 		
-		kontzertuak=zEJB.taldeKontzertuakLortuDB(izena);
+		kontzertuak=zEJB.taldeKontzertuakLortuDB(taldeIzena);
 	
 		return kontzertuak;
 	}
 	
-	public List<ErabiltzaileakE> taldePartaideakLortu(String izena) {
+	public List<ErabiltzaileakE> taldePartaideakLortu() {
 		
-		partaideak=zEJB.taldeErabiltzaileakLortuDB(izena);
+		partaideak=zEJB.taldeErabiltzaileakLortuDB(taldeIzena);
 		
 		return partaideak;
 	}
 	
-	public TaldePartaideakE partaidearenInfoaLortu(String partaidea) {
+	public TaldePartaideakE partaidearenInfoaLortu() {
 		
-		partaidearenInfo=zEJB.taldePartaideaLortuDB(partaidea);
+		System.out.println("El nombre 2222 es:"+taldekidea);
+		partaidearenInfo=zEJB.taldePartaideaLortuDB(taldekidea);
 		
 		return partaidearenInfo;
 	}
 	
-	public String klikatutakoTaldekideaGorde(String partaideIzena) {
+	public void klikatutakoTaldekideaGorde(String partaideIzena) {
 		
 		taldekidea=partaideIzena;
-		return taldekidea;
+		System.out.println("El nombre 1111 es:"+taldekidea);
+		
 	}
 	
 	
