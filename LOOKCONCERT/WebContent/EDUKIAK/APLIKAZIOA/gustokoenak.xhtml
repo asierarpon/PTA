@@ -24,6 +24,12 @@
 				<f:facet name="header">MUSIkA MOTA</f:facet>
 				#{gustokoenak.musikaMota}
 			</h:column>
+			<h:column>
+			<f:facet name="header">TALDEA IKUSI</f:facet>
+			<h:form >
+				<h:commandButton actionListener="#{taldeaViewMB.taldearenIzenaLortu(gustokoenak.izena)}" action="./taldekoinformazioa.xhtml" value="TALDEA IKUSI" />
+			</h:form>
+			</h:column>
 
 	</h:dataTable>
 	</ui:define>

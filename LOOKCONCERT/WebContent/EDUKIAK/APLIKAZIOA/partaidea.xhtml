@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define  name="Izenburua">PARTAIDEAREN INFORMAZIOA</ui:define>
+	<ui:define name="Edukia">
+	<form action="./taldekoinformazioa.xhtml">
+		<input type="submit" id="atzera" value="ATZERA" />
+	</form>
+		<h:dataTable value="#{taldeaViewMB.partaidearenInfoaLortu(taldeaViewMB.taldekidea)}" var="partaidea" border="2"> 
+			
+			<h:column>
+				<f:facet name="header">PARTAIDEAREN IZENA</f:facet>
+				#{taldeaViewMB.taldekidea} 
+			</h:column>
+			<h:column>
+				<f:facet name="header">TALDEA</f:facet>
+				#{taldeaViewMB.taldeIzena} 
+			</h:column>
+			<h:column>
+				<f:facet name="header">HERRIALDEA</f:facet>
+				#{partaidea.herrialdea} 
+			</h:column>
+			<h:column>
+				<f:facet name="header">JAIOTZE DATA</f:facet>
+				#{partaidea.jaiotzeData} 
+			</h:column>
+			<h:column>
+				<f:facet name="header">TALDE ROLA</f:facet>
+				#{partaidea.taldeRola} 
+			</h:column>
+			<h:column>
+				<f:facet name="header">DESKRIBAPENA</f:facet>
+				#{partaidea.deskribapena} 
+			</h:column>
+	</h:dataTable>
+	
+	</ui:define>
+	</ui:composition>
+</html>
