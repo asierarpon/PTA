@@ -14,7 +14,7 @@ import java.util.Date;
 @NamedQueries({
 @NamedQuery(name="KontzertuakE.findAll", query="SELECT k FROM KontzertuakE k"),
 @NamedQuery(name="KontzertuakE.findByTalde", query="SELECT k FROM KontzertuakE k WHERE k.taldeakE.izena =:taldeIzena"),
-@NamedQuery(name="KontzartuakE.findByPartaide", query="SELECT k FROM KontzertuakE k WHERE k.taldeakE.izena ="
+@NamedQuery(name="KontzertuakE.findByPartaide", query="SELECT k FROM KontzertuakE k WHERE k.taldeakE.izena ="
 		+ "(SELECT t.taldeakE.izena FROM TaldePartaideakE t WHERE t.username =:username)")
 })
 public class KontzertuakE implements Serializable {

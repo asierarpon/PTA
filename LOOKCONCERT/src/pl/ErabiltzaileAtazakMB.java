@@ -8,7 +8,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import bl.ErabiltzaileaEJB;
+
+import bl.OrokorrakEJB;
+import dl.ErabiltzaileakE;
 
 
 
@@ -22,11 +24,17 @@ public class ErabiltzaileAtazakMB implements Serializable {
 	private String mezua;
 	private String autentikatutakoa;
 	
-
+	@EJB
+	private OrokorrakEJB aEJB;
+	
+	private ErabiltzaileakE erab;
+	
 	@PostConstruct
 	public void autentikatutakoaLortu()
 	{
 		autentikatutakoa=FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
+		erab=aEJB.erabiltzaileaLortuDB(autentikatutakoa);
+
 	}
 	
 	public String getAutentikatutakoa() {
@@ -51,8 +59,6 @@ public class ErabiltzaileAtazakMB implements Serializable {
 	}
 
 
-	@EJB
-	private ErabiltzaileaEJB aEJB;
 	
 
 	public void clearForm() 
@@ -60,6 +66,15 @@ public class ErabiltzaileAtazakMB implements Serializable {
 		kodea=0;
 		mezua="";
 		autentikatutakoa="";	
+		erab=null;
+	}
+
+	public ErabiltzaileakE getErab() {
+		return erab;
+	}
+
+	public void setErab(ErabiltzaileakE erab) {
+		this.erab = erab;
 	}
 	
 	

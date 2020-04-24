@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define  name="Izenburua">KONTZERTU BERRI BAT SARTU</ui:define>
+	<ui:define name="Edukia">
+	<h:form action="./aldatutaldekoinformazioa.xhtml">
+		<h:commandButton action="./aldatutaldekoinformazioa.xhtml" actionListener="#{editatuAtazakMB.reset()}"  value="ATZERA" /> 
+	</h:form>
+		<h:panelGroup rendered="#{editatuAtazakMB.kodea!=2}">
+		<p>#{editatuAtazakMB.mezua}</p>
+		</h:panelGroup>
+	<h2>Hauek dira orain dituzun kontzertuak: </h2>
+		<h:dataTable value="#{editatuViewMB.kontzertuakBistaratu()}" var="kontzertuak" border="2"> 
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{kontzertuak.idKontzertuak}
+			</h:column>
+			<h:column>
+				<f:facet name="header">DATA</f:facet>
+				#{kontzertuak.data}
+			</h:column>
+			<h:column>
+				<f:facet name="header">LEKUA</f:facet>
+				#{kontzertuak.lekua}
+			</h:column>
+			<h:column>
+				<f:facet name="header">PREZIOA</f:facet>
+				#{kontzertuak.sarreraPrezioa}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ESTEKA</f:facet>
+				#{kontzertuak.sarreraEsteka}
+			</h:column>
+			<h:column>
+				<f:facet name="header">SARRERA KOPURUA</f:facet>
+				#{kontzertuak.sarreraKop}
+			</h:column>
+			<h:column>
+				<f:facet name="header">KENDU</f:facet>
+				<h:form>
+				<h:commandButton actionListener="#{editatuAtazakMB.kontzertuaKenduMB(kontzertuak, editatuViewMB)}" value="KENDU" />
+				</h:form>
+			</h:column>
+	</h:dataTable>
+		<h2>Kontzertu berria sartu: </h2>
+		<h:form>
+		DATA:
+		<h:inputText id="data" value="#{kontzertuaFormMB.data}" required="true" requiredMessage="ERROREA: data derrigorrezkoa da" > 
+				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
+				</h:inputText><h:message for="data" style="color:blue" /><br />
+		LEKUA:
+		<h:inputText id="lekua" value="#{kontzertuaFormMB.lekua}" required="true" requiredMessage="ERROREA: lekua derrigorrezkoa da" /> <h:message for="lekua" style="color:blue" /><br />
+		PREZIOA:
+		<h:inputText id="prezioa" value="#{kontzertuaFormMB.prezioa}" required="true" requiredMessage="ERROREA: prezioa derrigorrezkoa da" /> <h:message for="prezioa" style="color:blue" /><br />
+		ESTEKA:
+		<h:inputText id="esteka" value="#{kontzertuaFormMB.esteka}" required="true" requiredMessage="ERROREA: esteka derrigorrezkoa da" /> <h:message for="esteka" style="color:blue" /><br />
+		SARRERA-KOPURUA:
+		<h:inputText id="kopurua" value="#{kontzertuaFormMB.kopurua}" required="true" requiredMessage="ERROREA: kopurua derrigorrezkoa da" /> <h:message for="kopurua" style="color:blue" /><br />
+		<h:commandButton actionListener="#{editatuAtazakMB.kontzertuaSartu(kontzertuaFormMB, editatuViewMB)}" value="SARTU" />
+		</h:form>
+	</ui:define>
+	</ui:composition>
+</html>

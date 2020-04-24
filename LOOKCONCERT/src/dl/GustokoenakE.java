@@ -14,6 +14,9 @@ import javax.persistence.*;
 @NamedQuery(name="GustokoenakE.findAll", query="SELECT g FROM GustokoenakE g"),
 @NamedQuery(name="GustokoenakE.findErabiltzailkeak", query="SELECT g FROM GustokoenakE g WHERE g.erabiltzaileakE.username=:username"),
 @NamedQuery(name="GustokoenakE.findModa", query="SELECT g.taldeakE FROM GustokoenakE g"),
+@NamedQuery(name="GustokoenakE.findGustokoenakByErabiltzailea&talde", query="SELECT g FROM GustokoenakE g "
+		+ "WHERE g.erabiltzaileakE.username=:username AND g.taldeakE.izena=:taldeIzena"),
+@NamedQuery(name="GustokoenakE.taldeaExist", query="SELECT g.taldeakE.izena FROM GustokoenakE g WHERE g.taldeakE.izena=:taldeIzena")
 })
 public class GustokoenakE implements Serializable {
 	private static final long serialVersionUID = 1L;
