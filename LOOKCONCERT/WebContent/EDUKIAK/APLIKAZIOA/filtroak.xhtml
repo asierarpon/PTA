@@ -15,12 +15,14 @@
 	</form>
 		<hr />
 	<h:form>
+	
+	<center>
 	<h2>SARTU ZURE FILTROAK</h2>
 	
-	TALDE-IZENA:
-	<h:inputText id="taldea" value="#{filtroakFormMB.izena}" /><br />
-	TALDEAREN-HERRIALDEA:
-	<h:inputText id="taldeherrialdea" value="#{filtroakFormMB.herrialdea}"  /><br />
+	IZENA:
+	<h:inputText id="taldea" value="#{filtroakFormMB.izena}" />
+	HERRIALDEA:
+	<h:inputText id="taldeherrialdea" value="#{filtroakFormMB.herrialdea}"  />
 	MUSIKA-MOTA:
 	<h:selectOneMenu id="musikamota" value="#{filtroakFormMB.musikamota}">
 	<f:selectItem itemLabel="None"  itemValue="None" />
@@ -29,19 +31,20 @@
 	<f:selectItem itemLabel="klasikoa"  itemValue="klasikoa" />
 	<f:selectItem itemLabel="regetoia"  itemValue="regetoia" />
 	<f:selectItem itemLabel="rock"  itemValue="rock" />
-	</h:selectOneMenu><br />
+	</h:selectOneMenu>
 	BAKARKOA?
-	<h:selectOneListbox id="bakarkakoa" value="#{filtroakFormMB.bakarkoa}">
+	<h:selectOneMenu id="bakarkakoa" value="#{filtroakFormMB.bakarkoa}">
 	<f:selectItem itemLabel="none"  itemValue="none" />
 	<f:selectItem itemLabel="Bai"  itemValue="Bai" />
 	<f:selectItem itemLabel="Ez"  itemValue="Ez"/>
-	</h:selectOneListbox><br />
+	</h:selectOneMenu><br/><br/>
 	<h:commandButton actionListener="#{erabiltzaileakViewMB.filtroakDB(filtroakFormMB)}" value="APLIKATU" />
-	
+	</center>
 	
 	
 	
 	</h:form>
+	<center>
 		<h2>AURKITUTAKO TALDEAK</h2>
 		<h:dataTable value="#{erabiltzaileakViewMB.filtratutakoakBilatuDB(filtroakFormMB)}" var="aurkitutakoa" border="2"> 
 			<h:column>
@@ -60,6 +63,7 @@
 			</h:column>
 
 	</h:dataTable>
+	</center>
 	</ui:define>
 	</ui:composition>
 </html>

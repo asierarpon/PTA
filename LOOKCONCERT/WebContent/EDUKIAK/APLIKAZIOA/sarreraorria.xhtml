@@ -19,14 +19,15 @@
 	</form>
 	</h:panelGroup>
 		<hr />
+	<center>
 	<h2>HAUEK DIRA GAUR EGUN MODAN DAUDEN TALDEAK</h2>
-		<h:dataTable value="#{erabiltzaileakViewMB.modakoakLortuDB()}" var="moda" border="2"> 
+		<h:dataTable value="#{erabiltzaileakViewMB.modakoakLortuDB()}" var="moda" border="2" > 
 			<h:column>
 			<f:facet name="header">TALDEAREN IZENA</f:facet>
 				#{moda.izena}
 			</h:column>
 			<h:column>
-				<f:facet name="header">MUSIkA MOTA</f:facet>
+				<f:facet name="header">MUSIKA MOTA</f:facet>
 				#{moda.musikaMota}
 			</h:column>
 			<h:column>
@@ -37,6 +38,7 @@
 			</h:column>
 
 	</h:dataTable>
+	</center>
 	</ui:define>
 </ui:composition>
 </html>

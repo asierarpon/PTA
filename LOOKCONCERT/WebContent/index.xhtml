@@ -7,16 +7,19 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 	<ui:composition template="./EDUKIAK/TXANT/txantiloia.xhtml">
-	<ui:define  name="Izenburua">LOGINA ORRIA</ui:define>
+	<ui:define  name="Izenburua" >LOGINA ORRIA</ui:define>
 	<ui:define name="Edukia">
+	<center>
+	<h2>LOOKCONCERT</h2>
 	<form action="./EDUKIAK/APLIKAZIOA/sarreraorria.xhtml">
-		<input  type="submit" value="LOGEATU" />
+		<input  type="submit" value="LOGEATU"  />
 
 	</form>
 	
 	<form action="./EDUKIAK/APLIKAZIOA/erregistro.xhtml" >
 	<input  type="submit" value="ERREGISTRATU" />
 	</form>
+	</center>
 	</ui:define>
 </ui:composition>
 </html>

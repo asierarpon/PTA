@@ -10,6 +10,7 @@
 	<form action="./taldekoinformazioa.xhtml">
 		<input type="submit" id="atzera" value="ATZERA" />
 	</form>
+	<center>
 		<h:dataTable value="#{taldeaViewMB.partaidearenInfoaLortu()}" var="partaidea" border="2"> 
 			
 			<h:column>
@@ -37,7 +38,7 @@
 				#{partaidea.deskribapena} 
 			</h:column>
 	</h:dataTable>
-	
+	</center>
 	</ui:define>
 	</ui:composition>
 </html>

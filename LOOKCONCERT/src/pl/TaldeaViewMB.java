@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import bl.ErabiltzaileaEJB;
 import bl.OrokorrakEJB;
 import dl.ErabiltzaileakE;
 import dl.KontzertuakE;
@@ -22,12 +23,17 @@ public class TaldeaViewMB implements Serializable {
 	
 	@EJB
 	private OrokorrakEJB zEJB;
+	@EJB
+	private ErabiltzaileaEJB eEJB;
 	
 	private TaldeakE taldea;
 	
 	private List<KontzertuakE> kontzertuak;
 	
 	private List<ErabiltzaileakE> partaideak;
+	
+
+	
 	
 	private TaldePartaideakE partaidearenInfo;
 	
@@ -125,6 +131,18 @@ public class TaldeaViewMB implements Serializable {
 		System.out.println("El nombre 1111 es:"+taldekidea);
 		
 	}
+	
+	/*public boolean gustokoaEzGustokoa() {
+		
+		List<TaldeakE> gustokoak=eEJB.taldeGustokoenakLortuDB();
+		boolean emaitza=true;
+		
+		if(gustokoak.){
+			
+		}
+		
+		return emaitza;
+	}*/
 	
 	
 

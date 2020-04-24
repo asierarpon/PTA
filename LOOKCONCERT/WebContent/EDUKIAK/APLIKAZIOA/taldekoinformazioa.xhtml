@@ -12,7 +12,18 @@
 	</form>
 	
 	
-	<h2>"#{taldeaViewMB.taldeIzena}"</h2> 
+	<h2>#{taldeaViewMB.taldeIzena}</h2> 
+	<br></br>
+	<br></br>
+	<!--  <h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa==true}">
+		<h:commandButton actionListener="#{arduradunAtazakMB.txandazArduratuDB(txanda, arduradunViewMB)}" value="EZ-Gustokoa" />
+	</h:form>
+	
+	<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa==false}">
+		<h:commandButton actionListener="#{arduradunAtazakMB.txandazArduratuDB(txanda, arduradunViewMB)}" value="GUSTOKOA" />
+	</h:form>
+	
+	-->
 		<h:dataTable value="#{taldeaViewMB.informazioaLortuDB()}" var="taldea" border="2"> 
 			<h:column>
 				<f:facet name="header">TALDEAREN IZENA</f:facet>
@@ -35,10 +46,8 @@
 				#{taldeaViewMB.bakarra}
 			</h:column>
 			<h:column>
-			<f:facet name="header">ESTEKA</f:facet>
-			<h:form rendered="#{taldea.webOrria!=null}">
-				<h:commandButton actionListener="#{taldea.webOrria}" type="submit" value="JOAN WEBGUNERA" />
-			</h:form>
+				<f:facet name="header">ESTEKA</f:facet>
+				#{taldea.webOrria}
 			</h:column>
 
 	</h:dataTable>
@@ -68,10 +77,8 @@
 				#{kontzertua.sarreraKop}
 			</h:column>
 			<h:column>
-			<f:facet name="header">SARRERA EROSI</f:facet>
-			<h:form rendered="#{kontzertua.sarreraEsteka!=null}">
-				<h:commandButton actionListener="#{kontzertua.sarreraEsteka}"  type="submit" value="SARRERA EROSI" />
-			</h:form>
+				<f:facet name="header">SARRERA EROSI</f:facet>
+				#{kontzertua.sarreraEsteka}
 			</h:column>
 
 	</h:dataTable>
