@@ -12,18 +12,19 @@
 	</form>
 	
 	
+	<h:panelGroup rendered="#{taldeaViewMB.mezuaKonprobatu()==1}"> 
+		<p>#{taldeaViewMB.mezua}</p>
+	</h:panelGroup>
 	<h2>#{taldeaViewMB.taldeIzena}</h2> 
 	<br></br>
 	<br></br>
-	<!--  <h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa==true}">
-		<h:commandButton actionListener="#{arduradunAtazakMB.txandazArduratuDB(txanda, arduradunViewMB)}" value="EZ-Gustokoa" />
+	<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa()==true}">
+		<h:commandButton actionListener="#{taldeaViewMB.gustokotikKendu()}" value="EZ-Gustokoa" />
 	</h:form>
 	
-	<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa==false}">
-		<h:commandButton actionListener="#{arduradunAtazakMB.txandazArduratuDB(txanda, arduradunViewMB)}" value="GUSTOKOA" />
+	<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa()==false}">
+		<h:commandButton actionListener="#{taldeaViewMB.gustokoetanSartu()}" value="GUSTOKOA" />
 	</h:form>
-	
-	-->
 		<h:dataTable value="#{taldeaViewMB.informazioaLortuDB()}" var="taldea" border="2"> 
 			<h:column>
 				<f:facet name="header">TALDEAREN IZENA</f:facet>

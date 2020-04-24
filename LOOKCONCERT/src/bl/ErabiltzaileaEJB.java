@@ -72,8 +72,9 @@ public class ErabiltzaileaEJB {
     	return kodea;
     }
     public boolean gustokoenaKonprobatu(String taldeIzena) {
-    	taldeIzena = (String) em.createNamedQuery("GustokoenakE.taldeaExist").setParameter("taldeIzena", taldeIzena).getSingleResult();
-    	if(taldeIzena==null) return false;
+    	@SuppressWarnings("unchecked")
+		List<String> izenak = (List<String>)em.createNamedQuery("GustokoenakE.taldeaExist").setParameter("taldeIzena", taldeIzena).getResultList();
+    	if(izenak.isEmpty()) return false;
     	else return true;
     }
     public int gustokoenetanSartuDB(String taldeIzena){

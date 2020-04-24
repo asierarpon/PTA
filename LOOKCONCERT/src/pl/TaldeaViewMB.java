@@ -40,8 +40,23 @@ public class TaldeaViewMB implements Serializable {
 	private String taldeIzena;
 	private String bakarra;
 	private String taldekidea;
+	private String mezua="";
+	private int kodemezua;
 	
 	
+	
+	public String getMezua() {
+		return mezua;
+	}
+
+
+
+	public void setMezua(String mezua) {
+		this.mezua = mezua;
+	}
+
+
+
 	public String getBakarra() {
 		return bakarra;
 	}
@@ -86,11 +101,12 @@ public class TaldeaViewMB implements Serializable {
 	public void taldearenIzenaLortu(String izena) {
 		
 		taldeIzena=izena;
+		System.out.println("\nPRUEBAAA 1111: "+taldeIzena);
 		
 	}
 
 	public TaldeakE informazioaLortuDB(){
-		
+		System.out.println("\nPRUEBAAA 222: "+taldeIzena);
 		taldea=zEJB.taldeaLortuDB(taldeIzena);
 		
 		
@@ -119,7 +135,7 @@ public class TaldeaViewMB implements Serializable {
 	
 	public TaldePartaideakE partaidearenInfoaLortu() {
 		
-		System.out.println("El nombre 2222 es:"+taldekidea);
+		
 		partaidearenInfo=zEJB.taldePartaideaLortuDB(taldekidea);
 		
 		return partaidearenInfo;
@@ -132,17 +148,42 @@ public class TaldeaViewMB implements Serializable {
 		
 	}
 	
-	/*public boolean gustokoaEzGustokoa() {
+	public boolean gustokoaEzGustokoa() {
 		
-		List<TaldeakE> gustokoak=eEJB.taldeGustokoenakLortuDB();
-		boolean emaitza=true;
+		boolean emaitza=eEJB.gustokoenaKonprobatu(taldeIzena);
+		return emaitza;
+	}
+	
+	public void gustokoetanSartu() {
+		int kodea=eEJB.gustokoenetanSartuDB(taldeIzena);
 		
-		if(gustokoak.){
-			
+		if(kodea==0) {
+			mezua="TALDEA GUSTOKOETAN SARTU DA.";
+		}else {
+			mezua="ERRORE BAT GERTATATU DA.";
 		}
 		
-		return emaitza;
-	}*/
+	}
+	
+	public void gustokotikKendu() {
+		int kodea=eEJB.gostokoenetatikEzabatuDB(taldeIzena);
+		if(kodea==0) {
+			mezua="TALDEA GUSTOKOETAN SARTU DA.";
+		}else {
+			mezua="ERRORE BAT GERTATATU DA.";
+		}
+	}
+	
+	public int mezuaKonprobatu() {
+		kodemezua=1;
+		if(mezua.equals("")) {
+			kodemezua=2;
+		}
+		
+		return kodemezua;
+	}
+	
+	
 	
 	
 
