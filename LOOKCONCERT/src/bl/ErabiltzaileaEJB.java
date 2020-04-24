@@ -72,8 +72,8 @@ public class ErabiltzaileaEJB {
     	return kodea;
     }
     public boolean gustokoenaKonprobatu(String taldeIzena) {
-    	TaldeakE taldeaE = (TaldeakE) em.createNamedQuery("GustokoenakE.taldeaExist").setParameter("taldeIzena", taldeIzena).getSingleResult();
-    	if(taldeaE==null) return false;
+    	taldeIzena = (String) em.createNamedQuery("GustokoenakE.taldeaExist").setParameter("taldeIzena", taldeIzena).getSingleResult();
+    	if(taldeIzena==null) return false;
     	else return true;
     }
     public int gustokoenetanSartuDB(String taldeIzena){
@@ -93,6 +93,35 @@ public class ErabiltzaileaEJB {
     			.getSingleResult();
     	if(gustokoenakE==null) kodea=1;//ez da gustokoenetak ezer aurkitu parametro horiekin
     	else em.remove(gustokoenakE);
+    	return kodea;
+    }
+    public int taldeaEditatuDB(String izena, String deskribapena, String herrialdea, String musikaMota, 
+    		boolean bakarkakoa, String webOrria, String pasahitza) {
+    	int kodea=0; //Ez da arazorik egon
+    	TaldeakE taldeaE = em.find(TaldeakE.class,izena);
+    	if(taldeaE==null) kodea=1; // Taldea ez da existitzen
+    	else {
+    		
+    		taldeaE.setDeskribapena(deskribapena);
+    		taldeaE.setHerrialdea(herrialdea);
+    		taldeaE.setMusikaMota(musikaMota);
+    		taldeaE.setBakarkakoa(bakarkakoa);
+    		taldeaE.setWebOrria(webOrria);
+    		taldeaE.setPasahitza(pasahitza);
+    		em.persist(taldeaE);
+    	}
+    	return kodea;
+    }
+    public int taldePartaideaEditatu(String herrialdea, String taldeRola, String deskribapena) {
+    	int kodea=0; // taldea ondo sartu da
+    	TaldePartaideakE taldePartaideaE = em.find(TaldePartaideakE.class,erabiltzaileaE.getUsername());
+    	if(taldePartaideaE==null)kodea=1; //Ez da talde partaiderik existitzen izen horrekin
+    	else {
+    		taldePartaideaE.setHerrialdea(herrialdea);
+    		taldePartaideaE.setTaldeRola(taldeRola);
+    		taldePartaideaE.setDeskribapena(deskribapena);
+    		em.persist(taldePartaideaE);
+    	}
     	return kodea;
     }
 }
