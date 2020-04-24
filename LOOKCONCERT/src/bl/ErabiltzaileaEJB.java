@@ -72,8 +72,8 @@ public class ErabiltzaileaEJB {
     	return kodea;
     }
     public boolean gustokoenaKonprobatu(String taldeIzena) {
-    	TaldeakE taldeaE = (TaldeakE) em.createNamedQuery("GustokoenakE.taldeaExist").setParameter("taldeIzena", taldeIzena).getSingleResult();
-    	if(taldeaE==null) return false;
+    	taldeIzena = (String) em.createNamedQuery("GustokoenakE.taldeaExist").setParameter("taldeIzena", taldeIzena).getSingleResult();
+    	if(taldeIzena==null) return false;
     	else return true;
     }
     public int gustokoenetanSartuDB(String taldeIzena){
