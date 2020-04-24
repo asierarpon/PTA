@@ -13,8 +13,8 @@
 		<form action="./gustokoenak.xhtml">
 		<input type="submit" id="gsutokoenak" value="GUSTOKOENAK" />
 	</form>
-	<h:panelGroup rendered="">
-	<form action="./taldekoinformazioa.xhtml">
+	<h:panelGroup rendered="#{erabiltzaileAtazakMB.erab.taldePartaide==true}">
+	<form action="./aldatutaldekoinformazioa.xhtml">
 		<input type="submit" id="aldatu" value="TALDEKO INFOMAZIOA ALDATU" />
 	</form>
 	</h:panelGroup>

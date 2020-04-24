@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define  name="Izenburua">TALDEKO INFORMAZIOA ALDATU</ui:define>
+	<ui:define name="Edukia">
+	<form action="./sarreraorria.xhtml">
+		<input type="submit" id="sarreraorria" value="SARRERA ORRIA" />
+	</form>
+	<form action="./partaideaeditatu.xhtml">
+		<input type="submit" id="editatu" value="ZURE INFORMAZIOA ALDATU" />
+	</form>
+	<form action="./kontzertuasartu.xhtml">
+		<input type="submit" id="kontzertua" value="KONTZERTU BAT SARTU" />
+	</form>
+	<h2>Hau da zure informazioa</h2>
+	
+	<hr/>
+	</ui:define>
+	</ui:composition>
+</html>
