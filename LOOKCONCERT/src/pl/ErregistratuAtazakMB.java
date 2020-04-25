@@ -52,7 +52,7 @@ public class ErregistratuAtazakMB implements Serializable {
 			}
 			else
 			{
-				buelta="sarreraorria.xhtml";
+				buelta="index.xhtml";
 				e.clearForm();
 			}
 		}
@@ -98,7 +98,7 @@ public class ErregistratuAtazakMB implements Serializable {
 				}
 				else
 				{
-					buelta="sarreraorria.xhtml";
+					buelta="index.xhtml";
 				}
 			}			
 		}
@@ -138,7 +138,7 @@ public class ErregistratuAtazakMB implements Serializable {
 			}
 			else
 			{
-				buelta="sarreraorria.xhtml";
+				buelta="index.xhtml";
 			}
 		}
 		return buelta;

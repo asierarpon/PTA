@@ -21,7 +21,6 @@
     <web-resource-collection>
       <web-resource-name>erabiltzailea</web-resource-name>
       <url-pattern>/EDUKIAK/APLIKAZIOA/sarreraorria.xhtml</url-pattern>
-      <url-pattern>/sarreraorria.xhtml</url-pattern>
     </web-resource-collection>
       <auth-constraint>
       <role-name>erabiltzailea</role-name>
