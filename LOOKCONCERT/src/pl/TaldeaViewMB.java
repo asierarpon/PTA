@@ -48,50 +48,27 @@ public class TaldeaViewMB implements Serializable {
 	public String getMezua() {
 		return mezua;
 	}
-
-
-
 	public void setMezua(String mezua) {
 		this.mezua = mezua;
 	}
 
-
-
 	public String getBakarra() {
 		return bakarra;
 	}
-
-
-
 	public void setBakarra(String bakarra) {
 		this.bakarra = bakarra;
 	}
 
-
-	
-	
-	
-	
 	public String getTaldeIzena() {
 		return taldeIzena;
 	}
-
-
-
 	public void setTaldeIzena(String taldeIzena) {
 		this.taldeIzena = taldeIzena;
 	}
 	
-	
-
-
-
 	public String getTaldekidea() {
 		return taldekidea;
 	}
-
-
-
 	public void setTaldekidea(String taldekidea) {
 		this.taldekidea = taldekidea;
 	}
@@ -101,12 +78,12 @@ public class TaldeaViewMB implements Serializable {
 	public void taldearenIzenaLortu(String izena) {
 		
 		taldeIzena=izena;
-		System.out.println("\nPRUEBAAA 1111: "+taldeIzena);
+
 		
 	}
 
 	public TaldeakE informazioaLortuDB(){
-		System.out.println("\nPRUEBAAA 222: "+taldeIzena);
+
 		taldea=zEJB.taldeaLortuDB(taldeIzena);
 		
 		
@@ -138,14 +115,13 @@ public class TaldeaViewMB implements Serializable {
 		
 		partaidearenInfo=zEJB.taldePartaideaLortuDB(taldekidea);
 		
+		System.out.println("8888888888"+ partaidearenInfo.getUsername());
 		return partaidearenInfo;
 	}
 	
 	public void klikatutakoTaldekideaGorde(String partaideIzena) {
 		
-		taldekidea=partaideIzena;
-		System.out.println("El nombre 1111 es:"+taldekidea);
-		
+		taldekidea=partaideIzena;		
 	}
 	
 	public boolean gustokoaEzGustokoa() {
