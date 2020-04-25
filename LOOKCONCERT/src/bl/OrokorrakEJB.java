@@ -71,7 +71,7 @@ public class OrokorrakEJB {
     	return kodea;
     }
     public TaldePartaideakE taldePartaideaLortuDB(String username) {
-    	return em.find(TaldePartaideakE.class,username);
+    	return em.find(TaldePartaideakE.class, username);
     }
     public int taldeaPartaideaEzabatuDB(String username) {
 		int kodea=0; //Ondo ezabatu da
