@@ -10,6 +10,39 @@
 	<form action="./aldatutaldekoinformazioa.xhtml">
 		<input type="submit" id="atzera" value="ATZERA" />
 	</form>
+	<h2>Hau da zure informazioa</h2>
+	<h:dataTable value="#{editatuViewMB.partaideInformazioa(erabiltzaileAtazakMB.autentikatutakoa)}" var="informazioa" border="2"> 
+			<h:column>
+				<f:facet name="header">IZENA</f:facet>
+				#{informazioa.username}
+			</h:column>
+			<h:column>
+				<f:facet name="header">HERRIALDEA</f:facet>
+				#{informazioa.herrialdea}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ROLA</f:facet>
+				#{informazioa.taldeRola}
+			</h:column>
+			<h:column>
+				<f:facet name="header">JAOITZE-DATA</f:facet>
+				#{informazioa.jaiotzeData}
+			</h:column>
+			<h:column>
+				<f:facet name="header">DESKRIBAPENA</f:facet>
+				#{informazioa.deskribapena}
+			</h:column>
+	</h:dataTable>
+	<h2>Sartu zure informazio berria: </h2>
+	<h:form>
+	ROLA:
+	<h:inputTextarea id="rola" value="#{partaideFormMB.rola}" required="false" /><br />
+	HERRIALDEA:
+	<h:inputText id="herrialdea" value="#{partaideFormMB.herrialdea}" required="false" /><br />
+	DESKRIBAPENA:
+	<h:inputTextarea id="deskribapena" value="#{partaideFormMB.deskribapena}" required="false"  /> <br />
+	<h:commandButton action="#{editatuAtazakMB.partaideInformazioAldatu(partaideFormMB,editatuViewMB)}"  type="submit" value="ALDATU" />
+	</h:form>
 	</ui:define>
 	</ui:composition>
 </html>

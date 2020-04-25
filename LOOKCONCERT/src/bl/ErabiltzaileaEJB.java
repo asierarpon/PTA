@@ -116,7 +116,7 @@ public class ErabiltzaileaEJB {
     public int taldePartaideaEditatu(String herrialdea, String taldeRola, String deskribapena) {
     	int kodea=0; // taldea ondo sartu da
     	TaldePartaideakE taldePartaideaE = em.find(TaldePartaideakE.class,erabiltzaileaE.getUsername());
-    	if(taldePartaideaE==null)kodea=1; //Ez da talde partaiderik existitzen izen horrekin
+    	if(taldePartaideaE==null)kodea=2; //Ez da talde partaiderik existitzen izen horrekin
     	else {
     		taldePartaideaE.setHerrialdea(herrialdea);
     		taldePartaideaE.setTaldeRola(taldeRola);
