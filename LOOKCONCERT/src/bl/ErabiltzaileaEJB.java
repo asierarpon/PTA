@@ -73,7 +73,10 @@ public class ErabiltzaileaEJB {
     }
     public boolean gustokoenaKonprobatu(String taldeIzena) {
     	@SuppressWarnings("unchecked")
-		List<String> izenak = (List<String>)em.createNamedQuery("GustokoenakE.taldeaExist").setParameter("taldeIzena", taldeIzena).getResultList();
+		List<String> izenak = (List<String>)em.createNamedQuery("GustokoenakE.taldeaExist")
+				.setParameter("taldeIzena", taldeIzena)
+				.setParameter("username", erabiltzaileaE.getUsername())
+				.getResultList();
     	if(izenak.isEmpty()) return false;
     	else return true;
     }
