@@ -10,12 +10,15 @@
 	<form action="./sarreraorria.xhtml">
 		<input type="submit" id="sarreraorria" value="SARRERA ORRIA" />
 	</form>
+	<br />
 	<form action="./partaideaeditatu.xhtml">
 		<input type="submit" id="editatu" value="ZURE INFORMAZIOA ALDATU" />
 	</form>
+	<br />
 	<form action="./kontzertuasartu.xhtml">
 		<input type="submit" id="kontzertua" value="KONTZERTU BAT SARTU" />
 	</form>
+	<br />
 	<h2>Hau da zure informazioa</h2>
 	<h:dataTable value="#{editatuViewMB.taldeInformazioa(erabiltzaileAtazakMB.autentikatutakoa)}" var="informazioa" border="2"> 
 			<h:column>
