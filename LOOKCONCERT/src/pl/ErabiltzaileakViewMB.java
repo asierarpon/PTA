@@ -30,20 +30,17 @@ public class ErabiltzaileakViewMB implements Serializable {
 	public List <TaldeakE> modakoakLortuDB()
 	{
 		
-		if(modakoakDB==null)
-		{
+
 			modakoakDB=zEJB.modaLortuDB();	
-		}
+
 		return modakoakDB;
 	}
 	
 	public List <TaldeakE> gustokoenakLortuDB()
 	{
-		
-		if(gustokoenakDB==null)
-		{
+
 			gustokoenakDB=aEJB.taldeGustokoenakLortuDB();
-		}
+
 		return gustokoenakDB;
 	}
 	public void filtroakDB(FiltroakFormMB a)
