@@ -112,10 +112,9 @@ public class TaldeaViewMB implements Serializable {
 	
 	public TaldePartaideakE partaidearenInfoaLortu() {
 		
-		System.out.println("777777777777"+ taldekidea);
+
 		partaidearenInfo=zEJB.taldePartaideaLortuDB(taldekidea);
-		
-		System.out.println("8888888888"+ partaidearenInfo.getUsername());
+
 		return partaidearenInfo;
 	}
 	

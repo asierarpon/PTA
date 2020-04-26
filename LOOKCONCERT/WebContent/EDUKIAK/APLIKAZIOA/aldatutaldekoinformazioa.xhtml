@@ -36,7 +36,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">WEB-ORRIA</f:facet>
-				#{informazioa.webOrria}
+				<a href="#{informazioa.webOrria}">INFORMAZIO +</a>
 			</h:column>
 			<h:column>
 				<f:facet name="header">DESKRIBAPENA</f:facet>
@@ -62,11 +62,11 @@
 	WEBGUNE-LINK:
 	<h:inputTextarea id="link" value="#{taldeaFormMB.link}" required="false"  /> <br />
 	BAKARKOA ZARA?
-	<h:selectOneListbox id="bakarkakoa" value="#{taldeaFormMB.bakarkakoa}">
+	<h:selectOneMenu id="bakarkakoa" value="#{taldeaFormMB.bakarkakoa}">
 	<f:selectItem itemLabel="none"  itemValue="none" />
 	<f:selectItem itemLabel="Bai"  itemValue="Bai" />
 	<f:selectItem itemLabel="Ez"  itemValue="Ez"/>
-	</h:selectOneListbox><br />
+	</h:selectOneMenu><br />
 	<h:commandButton action="#{editatuAtazakMB.taldeInformazioAldatu(taldeaFormMB, editatuViewMB)}"  type="submit" value="ALDATU" />
 	</h:form>
 	<hr/>

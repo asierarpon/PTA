@@ -29,11 +29,11 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">PREZIOA</f:facet>
-				#{kontzertuak.sarreraPrezioa}
+				#{kontzertuak.sarreraPrezioa}€
 			</h:column>
 			<h:column>
 				<f:facet name="header">ESTEKA</f:facet>
-				#{kontzertuak.sarreraEsteka}
+				<a href="#{kontzertuak.sarreraEsteka}">LINK</a>
 			</h:column>
 			<h:column>
 				<f:facet name="header">SARRERA KOPURUA</f:facet>
@@ -50,7 +50,7 @@
 		<h:form>
 		DATA:
 		<h:inputText id="data" value="#{kontzertuaFormMB.data}" required="true" requiredMessage="ERROREA: data derrigorrezkoa da" > 
-				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
+				<f:convertDateTime pattern="yyyy/MM/dd HH:mm" timeZone="CET"/>
 				</h:inputText><h:message for="data" style="color:blue" /><br />
 		LEKUA:
 		<h:inputText id="lekua" value="#{kontzertuaFormMB.lekua}" required="true" requiredMessage="ERROREA: lekua derrigorrezkoa da" /> <h:message for="lekua" style="color:blue" /><br />
