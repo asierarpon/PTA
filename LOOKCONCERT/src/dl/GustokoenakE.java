@@ -13,7 +13,10 @@ import javax.persistence.*;
 @NamedQueries({
 @NamedQuery(name="GustokoenakE.findAll", query="SELECT g FROM GustokoenakE g"),
 @NamedQuery(name="GustokoenakE.findErabiltzailkeak", query="SELECT g FROM GustokoenakE g WHERE g.erabiltzaileakE.username=:username"),
-@NamedQuery(name="GustokoenakE.findModa", query="SELECT g.taldeakE FROM GustokoenakE g"),
+@NamedQuery(name="GustokoenakE.findModa", 
+query="SELECT g.taldeakE FROM GustokoenakE g GROUP BY g.taldeakE"),
+/*@NamedQuery(name="GustokoenakE.findModa", 
+query="SELECT COUNT(g.taldeakE) AS qty ,g.taldeakE FROM GustokoenakE g GROUP BY g.taldeakE ORDER BY qty DESC"),*/
 @NamedQuery(name="GustokoenakE.findGustokoenakByErabiltzailea&talde", query="SELECT g FROM GustokoenakE g "
 		+ "WHERE g.erabiltzaileakE.username=:username AND g.taldeakE.izena=:taldeIzena"),
 @NamedQuery(name="GustokoenakE.taldeaExist", query="SELECT g.taldeakE.izena FROM GustokoenakE g "
