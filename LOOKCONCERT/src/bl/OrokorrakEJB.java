@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import dl.*;
@@ -29,6 +30,7 @@ public class OrokorrakEJB {
     	int kodea=0; //Ez da arazorik egon
     	if(taldeaLortuDB(izena)!=null) kodea=1; // Badago talde bat izen horrekin
     	else {
+    		if (webOrria.isEmpty()) webOrria=null;
     		TaldeakE taldeaE = new TaldeakE (izena,deskribapena,herrialdea,musikaMota,bakarkakoa,webOrria,pasahitza);
     		em.persist(taldeaE);
     	}
@@ -38,7 +40,12 @@ public class OrokorrakEJB {
     	return em.find(TaldeakE.class,izena);
     }
     public TaldeakE taldeaLortuPartaidetikDB(String username) {
-    	return (TaldeakE)em.createNamedQuery("TaldePartaideakE.findTaldea").setParameter("username", username).getSingleResult();
+    	try {
+    		return (TaldeakE)em.createNamedQuery("TaldePartaideakE.findTaldea").setParameter("username", username).getSingleResult();
+    	}
+    	catch(NoResultException e) {
+    		return null;
+    	}
     }
     public int taldeaEzabatuDB(String izena) {
 		int kodea=0; //Ondo ezabatu da
@@ -61,6 +68,7 @@ public class OrokorrakEJB {
     public int taldePartaideaSartuDB(String username, Date jaiotzeData, String herrialdea, 
     		String taldeRola, String deskribapena, String taldeIzena, String pasahitza) {
     	int kodea=0; //Ez da arazorik egon
+    	if (deskribapena.isEmpty()) deskribapena=null;
     	TaldeakE taldeaE = taldeaLortuDB(taldeIzena);
     	TaldePartaideakE taldePartaideaE = new TaldePartaideakE(username, jaiotzeData, herrialdea, taldeRola,
 				deskribapena, taldeaE);
@@ -157,4 +165,3 @@ public class OrokorrakEJB {
     	return (List<TaldeakE>)em.createNamedQuery("GustokoenakE.findModa").setMaxResults(5).getResultList();
     }
 }
-

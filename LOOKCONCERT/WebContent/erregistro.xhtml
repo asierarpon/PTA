@@ -46,7 +46,7 @@
 				TALDE-ROLA:
 				<h:inputText id="rola" value="#{talderikGabeFormMB.rola}" required="true" requiredMessage="ERROREA: rola derrigorrezkoa da" /> <h:message for="rola" style="color:blue" /><br />
 				SARTU ZURE INFORMAZIO PERTSONALA:
-				<h:inputTextarea id="deskribapena" value="#{talderikGabeFormMB.deskribapena}" required="true" requiredMessage="ERROREA: deskribapena derrigorrezkoa da" /> <h:message for="deskribapena" style="color:blue" /><br />
+				<h:inputTextarea id="deskribapena" value="#{talderikGabeFormMB.deskribapena}" required="false" requiredMessage="ERROREA: deskribapena derrigorrezkoa da" /> <h:message for="deskribapena" style="color:blue" /><br />
 				
 				<h3>TALDE BERRIAREN DATUAK</h3>
 				TALDE-IZENA:
@@ -59,14 +59,16 @@
 				<h:inputText id="taldeherrialdea" value="#{talderikGabeFormMB.taldeherrialdea}" required="true" requiredMessage="ERROREA: taldearen herrialdea derrigorrezkoa da" /> <h:message for="taldeherrialdea" style="color:blue" /><br />
 				MUSIKA-MOTA:
 				<h:selectOneMenu id="musikamota" value="#{talderikGabeFormMB.musikamota}">
-				<f:selectItem itemLabel="rap"  itemValue="rap" />
-				<f:selectItem itemLabel="pop"  itemValue="pop"/>
-				<f:selectItem itemLabel="klasikoa"  itemValue="klasikoa" />
-				<f:selectItem itemLabel="regetoia"  itemValue="regetoia" />
-				<f:selectItem itemLabel="rock"  itemValue="rock" />
+					<f:selectItem itemLabel="Balada"  itemValue="balada" />
+					<f:selectItem itemLabel="Folk"  itemValue="folk" />
+					<f:selectItem itemLabel="Runba"  itemValue="runba" />
+					<f:selectItem itemLabel="Ska"  itemValue="ska" />
+					<f:selectItem itemLabel="Reggaeton"  itemValue="reggaeton"/>
+					<f:selectItem itemLabel="Rock"  itemValue="rock" />
+					<f:selectItem itemLabel="Trap"  itemValue="trap" />
 				</h:selectOneMenu><br />
 				WEBGUNE-LINK:
-				<h:inputTextarea id="link" value="#{talderikGabeFormMB.link}" required="true" requiredMessage="ERROREA: webgunearen linka herrialdea derrigorrezkoa da" /> <h:message for="link" style="color:blue" /><br />
+				<h:inputTextarea id="link" value="#{talderikGabeFormMB.link}" required="false" requiredMessage="ERROREA: webgunearen linka herrialdea derrigorrezkoa da" /> <h:message for="link" style="color:blue" /><br />
 				BAKARKOA ZARA?
 				<h:selectOneMenu id="bakarkakoa" value="#{talderikGabeFormMB.bakarkakoa}">
 				<f:selectItem itemLabel="Bai"  itemValue="Bai" />
@@ -90,7 +92,7 @@
 				TALDE-ROLA:
 				<h:inputText id="rola1" value="#{taldearekinFormMB.rola}" required="true" requiredMessage="ERROREA: rola derrigorrezkoa da" /> <h:message for="rola1" style="color:blue" /><br />
 				SARTU ZURE INFORMAZIO PERTSONALA:
-				<h:inputTextarea id="deskribapena1" value="#{taldearekinFormMB.deskribapenaerab}" required="true" requiredMessage="ERROREA: deskribapena derrigorrezkoa da" /> <h:message for="deskribapena1" style="color:blue" /><br />
+				<h:inputTextarea id="deskribapena1" value="#{taldearekinFormMB.deskribapenaerab}" required="false" requiredMessage="ERROREA: deskribapena derrigorrezkoa da" /> <h:message for="deskribapena1" style="color:blue" /><br />
 				
 				<h3>TALDEAREN LOGINA</h3>
 				TALDE-IZENA:

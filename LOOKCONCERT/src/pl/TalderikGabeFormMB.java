@@ -7,8 +7,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class TalderikGabeFormMB 
-{
+public class TalderikGabeFormMB {
 	private Date jaiotzedata;
 	private String herrialdea;
 	private String taldea;
@@ -20,10 +19,10 @@ public class TalderikGabeFormMB
 	private String bakarkakoa;
 	private String rola;
 	private String deskribapena;
-	
-	public TalderikGabeFormMB( Date jaiotzedata, String herrialdea, String taldea,
-			String pasahitzataldea, String taldedeskribapena, String taldeherrialdea, String musikamota, String link,
-			String bakarkakoa, String rola,String deskribapena) {
+
+	public TalderikGabeFormMB(Date jaiotzedata, String herrialdea, String taldea, String pasahitzataldea,
+			String taldedeskribapena, String taldeherrialdea, String musikamota, String link, String bakarkakoa,
+			String rola, String deskribapena) {
 		super();
 		this.jaiotzedata = jaiotzedata;
 		this.herrialdea = herrialdea;
@@ -34,15 +33,13 @@ public class TalderikGabeFormMB
 		this.musikamota = musikamota;
 		this.link = link;
 		this.bakarkakoa = bakarkakoa;
-		this.rola=rola;
-		this.deskribapena=deskribapena;
+		this.rola = rola;
+		this.deskribapena = deskribapena;
 	}
 
 	public TalderikGabeFormMB() {
 		super();
 	}
-
-
 
 	public String getDeskribapena() {
 		return deskribapena;
@@ -131,25 +128,20 @@ public class TalderikGabeFormMB
 	public void setBakarkakoa(String bakarkakoa) {
 		this.bakarkakoa = bakarkakoa;
 	}
+
 	public void ClearFormMB() {
-	
 
 		this.jaiotzedata = null;
 		this.herrialdea = "";
 		this.taldea = "";
-		this.pasahitzataldea ="";
+		this.pasahitzataldea = "";
 		this.taldedeskribapena = "";
 		this.taldeherrialdea = "";
 		this.musikamota = "";
 		this.link = "";
 		this.bakarkakoa = "";
-		this.rola="";
-		this.deskribapena="";
+		this.rola = "";
+		this.deskribapena = "";
 	}
 
-	
-	
-	
-	
-	
 }

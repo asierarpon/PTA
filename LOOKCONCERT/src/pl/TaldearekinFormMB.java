@@ -7,8 +7,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class TaldearekinFormMB 
-{
+public class TaldearekinFormMB {
 	private String deskribapena;
 	private Date jaiotzedata;
 	private String herrialdea;
@@ -16,7 +15,7 @@ public class TaldearekinFormMB
 	private String taldepasahitza;
 	private String rola;
 	private String deskribapenaerab;
-	
+
 	public TaldearekinFormMB(String deskribapena, Date jaiotzedata, String herrialdea, String taldeizena,
 			String taldepasahitza, String rola, String deskribapenaerab) {
 		super();
@@ -25,8 +24,8 @@ public class TaldearekinFormMB
 		this.herrialdea = herrialdea;
 		this.taldeizena = taldeizena;
 		this.taldepasahitza = taldepasahitza;
-		this.rola=rola;
-		this.deskribapena=deskribapenaerab;
+		this.rola = rola;
+		this.deskribapena = deskribapenaerab;
 	}
 
 	public String getDeskribapenaerab() {
@@ -88,7 +87,7 @@ public class TaldearekinFormMB
 	public void setTaldepasahitza(String taldepasahitza) {
 		this.taldepasahitza = taldepasahitza;
 	}
-	
+
 	public void clearFormMB() {
 
 		this.deskribapena = "";
@@ -96,10 +95,8 @@ public class TaldearekinFormMB
 		this.herrialdea = "";
 		this.taldeizena = "";
 		this.taldepasahitza = "";
-		this.rola="";
-		this.deskribapenaerab="";
+		this.rola = "";
+		this.deskribapenaerab = "";
 	}
-	
-	
-	
+
 }

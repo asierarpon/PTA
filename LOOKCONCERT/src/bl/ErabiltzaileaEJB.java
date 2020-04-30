@@ -11,6 +11,7 @@ import javax.ejb.EJBContext;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.jboss.ejb3.annotation.SecurityDomain;
@@ -58,7 +59,7 @@ public class ErabiltzaileaEJB {
 		int kodea=0; //Ondo ezabatu da
 		KontzertuakE kontzertuakE=em.find(KontzertuakE.class, id);
 		if(kontzertuakE!=null) em.remove(kontzertuakE);
-		else kodea=1; //Irakasgai hori ez da existitzen DB-an
+		else kodea=1; //Kontzertu hori ez da existitzen DB-an
 		return kodea;
 	}
     public int kontzertuaSartuDB(Date data, String lekua, float sarreraPrezioa, String sarreraEsteka, int sarreraKop) {
@@ -72,13 +73,16 @@ public class ErabiltzaileaEJB {
     	return kodea;
     }
     public boolean gustokoenaKonprobatu(String taldeIzena) {
-    	@SuppressWarnings("unchecked")
-		List<String> izenak = (List<String>)em.createNamedQuery("GustokoenakE.taldeaExist")
-				.setParameter("taldeIzena", taldeIzena)
-				.setParameter("username", erabiltzaileaE.getUsername())
-				.getResultList();
-    	if(izenak.isEmpty()) return false;
-    	else return true;
+    	try {
+	    	taldeIzena = (String) em.createNamedQuery("GustokoenakE.taldeaExist")
+					.setParameter("taldeIzena", taldeIzena)
+					.setParameter("username", erabiltzaileaE.getUsername())
+					.getSingleResult();
+	    	return true;
+    	}
+    	catch(NoResultException e) {
+    		return false;
+    	}
     }
     public int gustokoenetanSartuDB(String taldeIzena){
     	int kodea=0;
@@ -91,12 +95,16 @@ public class ErabiltzaileaEJB {
     }
     public int gostokoenetatikEzabatuDB(String taldeIzena) {
     	int kodea=0;
-    	GustokoenakE gustokoenakE = (GustokoenakE) em.createNamedQuery("GustokoenakE.findGustokoenakByErabiltzailea&talde")
-    			.setParameter("username", erabiltzaileaE.getUsername())
-    			.setParameter("taldeIzena", taldeIzena)
-    			.getSingleResult();
-    	if(gustokoenakE==null) kodea=1;//ez da gustokoenetak ezer aurkitu parametro horiekin
-    	else em.remove(gustokoenakE);
+    	try {
+	    	GustokoenakE gustokoenakE = (GustokoenakE) em.createNamedQuery("GustokoenakE.findGustokoenakByErabiltzailea&talde")
+	    			.setParameter("username", erabiltzaileaE.getUsername())
+	    			.setParameter("taldeIzena", taldeIzena)
+	    			.getSingleResult();
+	    	em.remove(gustokoenakE);
+    	}
+    	catch(NoResultException e) {
+    		kodea=1; //Ez dago talde hori gustokoenetan
+    	}
     	return kodea;
     }
     public int taldeaEditatuDB(String izena, String deskribapena, String herrialdea, String musikaMota, 
