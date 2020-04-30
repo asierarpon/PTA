@@ -29,7 +29,6 @@ public class ErregistratuAtazakMB implements Serializable {
 	}
 
 	public void setKodea(int kodea) {
-
 		this.kodea = kodea;
 	}
 
@@ -54,7 +53,8 @@ public class ErregistratuAtazakMB implements Serializable {
 				e.clearForm();
 			}
 		} else {
-			mezua = "KONTUZZZZ!!Izan nahi duzun erabiltzaile mota txarto aukeratuta daukaz";
+			kodea=4;
+			mezua = "Erabiltzaile mota eta sakatutako botoia ez datoz bat";
 			buelta = "erregistro.xhtml";
 		}
 		return buelta;
