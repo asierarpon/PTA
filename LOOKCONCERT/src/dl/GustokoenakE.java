@@ -10,6 +10,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="Gustokoenak")
+@NamedStoredProcedureQuery(
+	name="findModa",
+	resultClasses = TaldeakE.class,
+	procedureName="Moda"
+	)
 @NamedQueries({
 @NamedQuery(name="GustokoenakE.findAll", query="SELECT g FROM GustokoenakE g"),
 @NamedQuery(name="GustokoenakE.findErabiltzailkeak", query="SELECT g FROM GustokoenakE g WHERE g.erabiltzaileakE.username=:username"),
