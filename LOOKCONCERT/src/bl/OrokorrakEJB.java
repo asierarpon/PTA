@@ -162,7 +162,6 @@ public class OrokorrakEJB {
     }
     @SuppressWarnings("unchecked")
 	public List<TaldeakE> modaLortuDB(){
-    	return (List<TaldeakE>)em.createNamedStoredProcedureQuery("findModa").setMaxResults(5).getResultList();
-    	//return (List<TaldeakE>)em.createNamedQuery("GustokoenakE.findModa").setMaxResults(5).getResultList();
+    	return (List<TaldeakE>)em.createNamedStoredProcedureQuery("findModa").getResultList();
     }
 }
