@@ -1,17 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:composition template="../TXANT/txantiloia.xhtml">
-	<ui:define  name="Izenburua">ZURE INFORMAZIO PERTSONALA</ui:define>
+<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define name="Izenburua">ZURE INFORMAZIO PERTSONALA</ui:define>
 	<ui:define name="Edukia">
-	<form action="./aldatutaldekoinformazioa.xhtml">
-		<input type="submit" id="atzera" value="ATZERA" />
-	</form>
-	<h2>Hau da zure informazioa</h2>
-	<h:dataTable value="#{editatuViewMB.partaideInformazioa(erabiltzaileAtazakMB.autentikatutakoa)}" var="informazioa" border="2"> 
+		<form action="./aldatutaldekoinformazioa.xhtml">
+			<input type="submit" id="atzera" value="ATZERA" />
+		</form>
+		<hr />
+		<h:dataTable
+			value="#{editatuViewMB.partaideInformazioa(erabiltzaileAtazakMB.autentikatutakoa)}"
+			var="informazioa" columnClasses="tdIkustezina"
+			styleClass="tableIkustezina">
+			<h:column headerClass="trIkustezina">
+				<h3>#{editatuViewMB.partaideIzena}</h3>
+				<p>Herrialdea: #{informazioa.herrialdea}</p>
+				<p>Talde rola: #{informazioa.taldeRola}</p>
+				<p>Jaiotze data: #{informazioa.jaiotzeData}</p>
+				<h3>Informazio gehiago:</h3>
+				<p>#{informazioa.deskribapena}</p>
+			</h:column>
+		</h:dataTable>
+<!-- 		<h:dataTable
+			value="#{editatuViewMB.partaideInformazioa(erabiltzaileAtazakMB.autentikatutakoa)}"
+			var="informazioa" border="2">
 			<h:column>
 				<f:facet name="header">IZENA</f:facet>
 				#{informazioa.username}
@@ -32,17 +47,26 @@
 				<f:facet name="header">DESKRIBAPENA</f:facet>
 				#{informazioa.deskribapena}
 			</h:column>
-	</h:dataTable>
-	<h2>Sartu zure informazio berria: </h2>
-	<h:form>
+		</h:dataTable> -->
+		<h3>Sartu zure informazio berria:</h3>
+		<h:form>
 	ROLA:
-	<h:inputTextarea id="rola" value="#{partaideFormMB.rola}" required="false" /><br />
+	<h:inputText id="rola" value="#{partaideFormMB.rola}"
+				required="false" />
+			<br />
 	HERRIALDEA:
-	<h:inputText id="herrialdea" value="#{partaideFormMB.herrialdea}" required="false" /><br />
+	<h:inputText id="herrialdea" value="#{partaideFormMB.herrialdea}"
+				required="false" />
+			<br />
 	DESKRIBAPENA:
-	<h:inputTextarea id="deskribapena" value="#{partaideFormMB.deskribapena}" required="false"  /> <br />
-	<h:commandButton action="#{editatuAtazakMB.partaideInformazioAldatu(partaideFormMB,editatuViewMB)}"  type="submit" value="ALDATU" />
-	</h:form>
+	<h:inputTextarea rows="1" id="deskribapena"
+				value="#{partaideFormMB.deskribapena}" required="false" />
+			<br />
+			<br />
+			<h:commandButton
+				action="#{editatuAtazakMB.partaideInformazioAldatu(partaideFormMB,editatuViewMB)}"
+				type="submit" value="ALDATU" />
+		</h:form>
 	</ui:define>
-	</ui:composition>
+</ui:composition>
 </html>

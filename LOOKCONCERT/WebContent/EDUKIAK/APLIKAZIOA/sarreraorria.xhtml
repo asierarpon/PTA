@@ -1,46 +1,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:composition template="../TXANT/txantiloia.xhtml">
-	<ui:define  name="Izenburua">MODAKO TALDEAK</ui:define>
+<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define name="Izenburua">MODAKO TALDEAK</ui:define>
 	<ui:define name="Edukia">
-		<form action="./filtroak.xhtml">
-		<input type="submit" id="filtroak" value="TALDEA BILATU" />
-	</form>
-	<br />
-		<form action="./gustokoenak.xhtml">
-		<input type="submit" id="gsutokoenak" value="GUSTOKOENAK" />
-	</form>
-	<br/>
-	<h:panelGroup rendered="#{erabiltzaileAtazakMB.erab.taldePartaide==true}">
-	<form action="./aldatutaldekoinformazioa.xhtml">
-		<input type="submit" id="aldatu" value="TALDEKO INFOMAZIOA ALDATU" />
-	</form>
-	</h:panelGroup>
+		<center>
+			<table class="tableIkustezina2">
+				<tr class="trIkustezina2">
+					<td class="tdIkustezina2">
+						<form action="./filtroak.xhtml">
+							<input type="submit" id="filtroak" value="TALDEA BILATU" />
+						</form>
+					</td>
+					<td class="tdIkustezina2">
+						<form action="./gustokoenak.xhtml">
+							<input type="submit" id="gsutokoenak" value="GUSTOKOENAK" />
+						</form>
+					</td>
+				</tr>
+			</table>
+		</center>
 		<hr />
-	<center>
-	<h2>HAUEK DIRA GAUR EGUN MODAN DAUDEN TALDEAK</h2>
-		<h:dataTable value="#{erabiltzaileakViewMB.modakoakLortuDB()}" var="moda" border="2" > 
-			<h:column>
-			<f:facet name="header">TALDEAREN IZENA</f:facet>
+		<center>
+			<h2>HAUEK DIRA GAUR EGUN MODAN DAUDEN TALDEAK</h2>
+			<h:dataTable value="#{erabiltzaileakViewMB.modakoakLortuDB()}"
+				var="moda" border="2">
+				<h:column>
+					<f:facet name="header">TALDEAREN IZENA</f:facet>
 				#{moda.izena}
 			</h:column>
-			<h:column>
-				<f:facet name="header">MUSIKA MOTA</f:facet>
+				<h:column>
+					<f:facet name="header">MUSIKA MOTA</f:facet>
 				#{moda.musikaMota}
 			</h:column>
-			<h:column>
-			<f:facet name="header">TALDEA IKUSI</f:facet>
-			<h:form >
-				<h:commandButton actionListener="#{taldeaViewMB.taldearenIzenaLortu(moda.izena)}" action="taldekoinformazioa" type="submit" value="TALDEA IKUSI" />
-			</h:form>
-			</h:column>
-
-	</h:dataTable>
-	</center>
+				<h:column>
+					<f:facet name="header">TALDEA IKUSI</f:facet>
+					<h:form>
+						<h:commandButton
+							actionListener="#{taldeaViewMB.taldearenIzenaLortu(moda.izena)}"
+							action="taldekoinformazioa" type="submit" value="TALDEA IKUSI" />
+					</h:form>
+				</h:column>
+			</h:dataTable>
+		</center>
+		<br /><br />
+		<h:panelGroup
+			rendered="#{erabiltzaileAtazakMB.erab.taldePartaide==true}">
+			<form action="./aldatutaldekoinformazioa.xhtml">
+				<input type="submit" id="aldatu" value="TALDEKO INFOMAZIOA ALDATU" />
+			</form>
+		</h:panelGroup>
 	</ui:define>
 </ui:composition>
 </html>

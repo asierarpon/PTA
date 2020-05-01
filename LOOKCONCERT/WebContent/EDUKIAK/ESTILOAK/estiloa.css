@@ -1,18 +1,19 @@
 @charset "UTF-8";
 h1 {text-align: center;}
 table,th,td {
-	border: 1px solid red;
+	border: 2px solid black;
 	align: center;
 	}
 th{
-	background-color: red;
+	background-color: #babdb6;
 	color: black;
 	text-align: center;
+	border-bottom: 2px solid black;
 }
 
 th, td {
 	padding: 5px;
-   	border-bottom: 1px solid #ddd;
+   	border-bottom: 2px solid #ddd;
 }
 
 tr{
@@ -26,14 +27,24 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 .tableIkustezina {
 	border: 0px;
-	width: 90%;
-	margin-left: 5%;
+	width: auto;
+	margin-left: 0%;
 }
-.trIkustezina, .tdikustezina {
+.trIkustezina, .tdIkustezina {
+	text-align: left;
+	border: 0px;
+	background-color: lightblue;
+}
+.tableIkustezina2 {
+	border: 0px;
+	width: 50%;
+	margin-left: 0%;
+}
+.trIkustezina2, .tdIkustezina2 {
 	text-align: center;
 	border: 0px;
+	background-color: lightblue;
 }
-
 body {
   background-color: lightblue;
 }

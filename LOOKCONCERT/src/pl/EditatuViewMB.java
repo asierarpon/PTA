@@ -27,6 +27,8 @@ public class EditatuViewMB implements Serializable {
 	private TaldeakE taldeak;
 	private TaldePartaideakE partaide;
 	private static final long serialVersionUID = 1L;
+	private String bakarkakoa;
+	private String partaideIzena;
 
 	public List<KontzertuakE> kontzertuakBistaratu() {
 		if (kontzertuak == null) {
@@ -36,9 +38,11 @@ public class EditatuViewMB implements Serializable {
 	}
 
 	public TaldeakE taldeInformazioa(String username) {
-
+		
 		if (taldeak == null) {
 			taldeak = oEJB.taldeaLortuPartaidetikDB(username);
+			if(taldeak.getBakarkakoa())bakarkakoa="Bai";
+			else bakarkakoa="Ez";
 		}
 		return taldeak;
 
@@ -48,6 +52,7 @@ public class EditatuViewMB implements Serializable {
 
 		if (partaide == null) {
 			partaide = oEJB.taldePartaideaLortuDB(username);
+			partaideIzena=oEJB.erabiltzaileaLortuDB(username).getIzena();
 		}
 		return partaide;
 
@@ -73,6 +78,22 @@ public class EditatuViewMB implements Serializable {
 
 	public void setPartaide(TaldePartaideakE partaide) {
 		this.partaide = partaide;
+	}
+
+	public String getBakarkakoa() {
+		return bakarkakoa;
+	}
+
+	public void setBakarkakoa(String bakarkakoa) {
+		this.bakarkakoa = bakarkakoa;
+	}
+
+	public String getPartaideIzena() {
+		return partaideIzena;
+	}
+
+	public void setPartaideIzena(String partaideIzena) {
+		this.partaideIzena = partaideIzena;
 	}
 
 }

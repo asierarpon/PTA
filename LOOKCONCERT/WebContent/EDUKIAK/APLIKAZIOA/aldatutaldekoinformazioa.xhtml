@@ -1,78 +1,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:composition template="../TXANT/txantiloia.xhtml">
-	<ui:define  name="Izenburua">TALDEKO INFORMAZIOA ALDATU</ui:define>
+<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define name="Izenburua">TALDEKO INFORMAZIOA ALDATU</ui:define>
 	<ui:define name="Edukia">
-	<form action="./sarreraorria.xhtml">
-		<input type="submit" id="sarreraorria" value="SARRERA ORRIA" />
-	</form>
-	<br />
-	<form action="./partaideaeditatu.xhtml">
-		<input type="submit" id="editatu" value="ZURE INFORMAZIOA ALDATU" />
-	</form>
-	<br />
-	<form action="./kontzertuasartu.xhtml">
-		<input type="submit" id="kontzertua" value="KONTZERTU BAT SARTU" />
-	</form>
-	<br />
-	<h2>Hau da zure informazioa</h2>
-	<h:dataTable value="#{editatuViewMB.taldeInformazioa(erabiltzaileAtazakMB.autentikatutakoa)}" var="informazioa" border="2"> 
+		<center>
+			<table class="tableIkustezina2">
+				<tr class="trIkustezina2">
+					<td class="tdIkustezina2">
+						<form action="./sarreraorria.xhtml">
+							<input type="submit" id="sarreraorria" value="SARRERA ORRIA" />
+						</form>
+					</td>
+				</tr>
+			</table>
+		</center>
+		<hr />
+		<form action="./partaideaeditatu.xhtml">
+			<input type="submit" id="editatu" value="ZURE INFORMAZIOA ALDATU" />
+		</form>
+		<br />
+		<form action="./kontzertuasartu.xhtml">
+			<input type="submit" id="kontzertua" value="KONTZERTU BAT SARTU" />
+		</form>
+		<h:dataTable
+			value="#{editatuViewMB.taldeInformazioa(erabiltzaileAtazakMB.autentikatutakoa)}"
+			var="informazioa" columnClasses="tdIkustezina"
+			styleClass="tableIkustezina">
 			<h:column>
-				<f:facet name="header">TALDEAREN IZENA</f:facet>
-				#{informazioa.izena}
+				<h2>#{informazioa.izena.toUpperCase()}</h2>
+				<p>Herrialdea: #{informazioa.herrialdea}</p>
+				<p>Musika mota: #{informazioa.musikaMota}</p>
+				<p>Bakarkakoa: #{editatuViewMB.bakarkakoa}</p>
+				<h3>Deskribapena</h3>
+				<p>#{informazioa.deskribapena}</p>
+				<p>
+					<a href="#{informazioa.webOrria}">#{informazioa.webOrria}</a>
+				</p>
 			</h:column>
-			<h:column>
-				<f:facet name="header">HERRIALDEA</f:facet>
-				#{informazioa.herrialdea}
-			</h:column>
-			<h:column>
-				<f:facet name="header">MUSIKA MOTA</f:facet>
-				#{informazioa.musikaMota}
-			</h:column>
-			<h:column>
-				<f:facet name="header">BAKARKAKOA</f:facet>
-				#{informazioa.bakarkakoa}
-			</h:column>
-			<h:column>
-				<f:facet name="header">WEB-ORRIA</f:facet>
-				<a href="#{informazioa.webOrria}">INFORMAZIO +</a>
-			</h:column>
-			<h:column>
-				<f:facet name="header">DESKRIBAPENA</f:facet>
-				#{informazioa.deskribapena}
-			</h:column>
-	</h:dataTable>
-	<br />
-	<h2>Sartu zure informazio berria: </h2>
-	<h:form>
-	TALDEAREN-DESKIRBAPENA:
-	<h:inputTextarea id="taldedeskribapena" value="#{taldeaFormMB.taldedeskribapena}" required="false" /><br />
+		</h:dataTable>
+		<br />
+		<h2>Sartu aldatu nahi duzun informazioa:</h2>
+		(Hutsik edo "none" moduan ustez diren atalak ez dira aldatuko)
+		<br />
+		<br />
+		<h:form>
 	TALDEAREN-HERRIALDEA:
-	<h:inputText id="taldeherrialdea" value="#{taldeaFormMB.taldeherrialdea}" required="false" /><br />
+	<h:inputText id="taldeherrialdea"
+				value="#{taldeaFormMB.taldeherrialdea}" required="false" />
+			<br />
 	MUSIKA-MOTA:
 	<h:selectOneMenu id="musikamota" value="#{taldeaFormMB.musikamota}">
-	<f:selectItem itemLabel="None"  itemValue="None" />
-	<f:selectItem itemLabel="rap"  itemValue="rap" />
-	<f:selectItem itemLabel="pop"  itemValue="pop"/>
-	<f:selectItem itemLabel="klasikoa"  itemValue="klasikoa" />
-	<f:selectItem itemLabel="regetoia"  itemValue="regetoia" />
-	<f:selectItem itemLabel="rock"  itemValue="rock" />
-	</h:selectOneMenu><br />
-	WEBGUNE-LINK:
-	<h:inputTextarea id="link" value="#{taldeaFormMB.link}" required="false"  /> <br />
+				<f:selectItem itemLabel="none" itemValue="none" />
+				<f:selectItem itemLabel="Balada" itemValue="balada" />
+				<f:selectItem itemLabel="Folk" itemValue="folk" />
+				<f:selectItem itemLabel="Runba" itemValue="runba" />
+				<f:selectItem itemLabel="Ska" itemValue="ska" />
+				<f:selectItem itemLabel="Reggaeton" itemValue="reggaeton" />
+				<f:selectItem itemLabel="Rock" itemValue="rock" />
+				<f:selectItem itemLabel="Trap" itemValue="trap" />
+			</h:selectOneMenu>
+			<br />
 	BAKARKOA ZARA?
 	<h:selectOneMenu id="bakarkakoa" value="#{taldeaFormMB.bakarkakoa}">
-	<f:selectItem itemLabel="none"  itemValue="none" />
-	<f:selectItem itemLabel="Bai"  itemValue="Bai" />
-	<f:selectItem itemLabel="Ez"  itemValue="Ez"/>
-	</h:selectOneMenu><br />
-	<h:commandButton action="#{editatuAtazakMB.taldeInformazioAldatu(taldeaFormMB, editatuViewMB)}"  type="submit" value="ALDATU" />
-	</h:form>
-	<hr/>
+				<f:selectItem itemLabel="none" itemValue="none" />
+				<f:selectItem itemLabel="Bai" itemValue="Bai" />
+				<f:selectItem itemLabel="Ez" itemValue="Ez" />
+			</h:selectOneMenu>
+			<br />
+	WEBGUNE-LINK:
+	<h:inputTextarea id="link" value="#{taldeaFormMB.link}" rows="1"
+				required="false" />
+			<br />
+	TALDEAREN-DESKIRBAPENA:
+	<h:inputTextarea id="taldedeskribapena"
+				value="#{taldeaFormMB.taldedeskribapena}" rows="1" required="false" />
+			<br />
+			<br />
+			<h:commandButton
+				action="#{editatuAtazakMB.taldeInformazioAldatu(taldeaFormMB, editatuViewMB)}"
+				type="submit" value="ALDATU" />
+		</h:form>
 	</ui:define>
-	</ui:composition>
+</ui:composition>
 </html>

@@ -7,13 +7,22 @@
 <ui:composition template="../TXANT/txantiloia.xhtml">
 	<ui:define name="Izenburua">BILATU ZURE TALDEAK</ui:define>
 	<ui:define name="Edukia">
-		<form action="./sarreraorria.xhtml">
-			<input type="submit" id="sarreraorria" value="SARRERAKO ORRIA" />
-		</form>
-		<br />
-		<form action="./gustokoenak.xhtml">
-			<input type="submit" id="gustokoenak" value="GUSTOKOENAK" />
-		</form>
+		<center>
+			<table class="tableIkustezina2">
+				<tr class="trIkustezina2">
+					<td class="tdIkustezina2">
+						<form action="./sarreraorria.xhtml">
+							<input type="submit" id="sarreraorria" value="SARRERA ORRIA" />
+						</form>
+					</td>
+					<td class="tdIkustezina2">
+						<form action="./gustokoenak.xhtml">
+							<input type="submit" id="gustokoenak" value="GUSTOKOENAK" />
+						</form>
+					</td>
+				</tr>
+			</table>
+		</center>
 		<hr />
 		<h:form>
 			<center>

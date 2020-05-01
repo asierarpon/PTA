@@ -50,7 +50,7 @@ public class EditatuAtazakMB implements Serializable {
 		if (kodea == 1) {
 			mezua = "Kontzertua ez da ondo sartu";
 		} else {
-			mezua = "Kontzertua ond sartu da";
+			mezua = "Kontzertua ondo sartu da";
 		}
 		a.clearForm();
 		b.resetView();
@@ -92,7 +92,7 @@ public class EditatuAtazakMB implements Serializable {
 				bakarkakoa = false;
 			}
 		}
-		if (d.getMusikamota().equals("None")) {
+		if (d.getMusikamota().equals("none")) {
 			mota = a.getTaldeak().getMusikaMota();
 		} else {
 			mota = d.getMusikamota();

@@ -10,35 +10,17 @@
 	<form action="./taldekoinformazioa.xhtml">
 		<input type="submit" id="atzera" value="ATZERA" />
 	</form>
-	<center>
-		<h:dataTable value="#{taldeaViewMB.partaidearenInfoaLortu()}" var="partaidea" border="2"> 
-			
-			<h:column>
-				<f:facet name="header">PARTAIDEAREN IZENA</f:facet>
-				#{taldeaViewMB.partaideIzena} 
+	<hr />
+		<h:dataTable value="#{taldeaViewMB.partaidearenInfoaLortu()}" var="partaidea" columnClasses="tdIkustezina" styleClass="tableIkustezina"> 
+			<h:column headerClass="trIkustezina"  >
+				<h3>#{taldeaViewMB.partaideIzena}</h3>
+				<p>Taldea: #{taldeaViewMB.taldeIzena} </p>
+				<p>Herrialdea: #{partaidea.herrialdea}</p>
+				<p>Jaiotze data: #{partaidea.jaiotzeData}</p>
+				<h3>Informazio gehiago:</h3>
+				<p>#{partaidea.deskribapena}</p>
 			</h:column>
-			<h:column>
-				<f:facet name="header">TALDEA</f:facet>
-				#{taldeaViewMB.taldeIzena} 
-			</h:column>
-			<h:column>
-				<f:facet name="header">HERRIALDEA</f:facet>
-				#{partaidea.herrialdea} 
-			</h:column>
-			<h:column>
-				<f:facet name="header">JAIOTZE DATA</f:facet>
-				#{partaidea.jaiotzeData} 
-			</h:column>
-			<h:column>
-				<f:facet name="header">TALDE ROLA</f:facet>
-				#{partaidea.taldeRola} 
-			</h:column>
-			<h:column>
-				<f:facet name="header">DESKRIBAPENA</f:facet>
-				#{partaidea.deskribapena} 
-			</h:column>
-	</h:dataTable>
-	</center>
+		</h:dataTable>
 	</ui:define>
 	</ui:composition>
 </html>

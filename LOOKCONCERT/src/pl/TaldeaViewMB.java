@@ -89,9 +89,9 @@ public class TaldeaViewMB implements Serializable {
 		taldea = oEJB.taldeaLortuDB(taldeIzena);
 
 		if (taldea.getBakarkakoa() == true) {
-			bakarra = "BAI";
+			bakarra = "Bai";
 		} else {
-			bakarra = "EZ";
+			bakarra = "Ez";
 		}
 
 		return taldea;

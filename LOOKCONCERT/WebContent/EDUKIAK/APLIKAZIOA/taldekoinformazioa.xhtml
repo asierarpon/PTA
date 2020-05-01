@@ -1,60 +1,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-
-	<ui:composition template="../TXANT/txantiloia.xhtml">
-	<ui:define  name="Izenburua">TALDEAREN INFORMAZIOA</ui:define>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="../TXANT/txantiloia.xhtml">
+	<ui:define name="Izenburua">TALDEAREN INFORMAZIOA</ui:define>
 	<ui:define name="Edukia">
-	<form action="./sarreraorria.xhtml">
-		<input type="submit" id="atzera" value="ATZERA" />
-	</form>
-	
-	
-
-	<h2>#{taldeaViewMB.taldeIzena}</h2> 
-	<br></br>
-	<br></br>
-	<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa()==true}">
-		<h:commandButton actionListener="#{taldeaViewMB.gustokotikKendu()}" value="EZ-Gustokoa" />
-	</h:form>
-	
-	<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa()==false}">
-		<h:commandButton actionListener="#{taldeaViewMB.gustokoetanSartu()}" value="GUSTOKOA" />
-	</h:form>
-		<h:dataTable value="#{taldeaViewMB.informazioaLortuDB()}" var="taldea" border="2"> 
+		<center>
+			<table class="tableIkustezina2">
+				<tr class="trIkustezina2">
+					<td class="tdIkustezina2">
+						<form action="./sarreraorria.xhtml">
+							<input type="submit" id="sarreraorria" value="SARRERA ORRIA" />
+						</form>
+					</td>
+				</tr>
+			</table>
+		</center>
+		<hr />
+		<h:dataTable value="#{taldeaViewMB.informazioaLortuDB()}" var="taldea"
+			columnClasses="tdIkustezina" styleClass="tableIkustezina">
 			<h:column>
-				<f:facet name="header">TALDEAREN IZENA</f:facet>
-				#{taldea.izena}
+				<h2>#{taldeaViewMB.taldeIzena.toUpperCase()}</h2>
+				<p>Herrialdea: #{taldea.herrialdea}</p>
+				<p>Musika mota: #{taldea.musikaMota}</p>
+				<p>Bakarkakoa: #{taldeaViewMB.bakarra}</p>
+				<h3>Deskribapena</h3>
+				<p>#{taldea.deskribapena}</p>
+				<p>
+					<a href="#{taldea.webOrria}">#{taldea.webOrria}</a>
+				</p>
+				<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa()==true}">
+					<h:commandButton actionListener="#{taldeaViewMB.gustokotikKendu()}"
+						value="EZ-GUSTOKOA" />
+				</h:form>
+				<h:form rendered="#{taldeaViewMB.gustokoaEzGustokoa()==false}">
+					<h:commandButton
+						actionListener="#{taldeaViewMB.gustokoetanSartu()}"
+						value="GUSTOKOA" />
+				</h:form>
 			</h:column>
-			<h:column>
-				<f:facet name="header">DESKRIBAPENA</f:facet>
-				#{taldea.deskribapena}
-			</h:column>
-			<h:column>
-				<f:facet name="header">HERRIALDEA</f:facet>
-				#{taldea.herrialdea}
-			</h:column>
-			<h:column>
-				<f:facet name="header">MUSIKA MOTA</f:facet>
-				#{taldea.musikaMota}
-			</h:column>
-			<h:column>
-				<f:facet name="header">BAKARKAKOA</f:facet>
-				#{taldeaViewMB.bakarra}
-			</h:column>
-			<h:column>
-				<f:facet name="header">ESTEKA</f:facet>
-				<a href="#{taldea.webOrria}">INFORMAZIO +</a> 
-			</h:column>
-
-	</h:dataTable>
-	
-	
-	<h2>KONTZERTUAK</h2>
-		<h:dataTable value="#{taldeaViewMB.kontzertuakLortu()}" var="kontzertua" border="2"> 
-			
+		</h:dataTable>
+		<h2>KONTZERTUAK</h2>
+		<h:dataTable value="#{taldeaViewMB.kontzertuakLortu()}"
+			var="kontzertua" border="2">
 			<h:column>
 				<f:facet name="header">TKONTZERTUAREN ID</f:facet>
 				#{kontzertua.idKontzertuak}
@@ -77,29 +66,25 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">SARRERA EROSI</f:facet>
-				<a href="#{kontzertua.sarreraEsteka}">EROSI HEMEN SARRERAK</a>
+				<a href="#{kontzertua.sarreraEsteka}">#{kontzertua.sarreraEsteka}</a>
 			</h:column>
-
-	</h:dataTable>
-	
-	
-		
-	<h2>PARTAIDEAK</h2>
-		<h:dataTable value="#{taldeaViewMB.taldePartaideakLortu()}" var="partaideak" border="2"> 
-			
+		</h:dataTable>
+		<h2>PARTAIDEAK</h2>
+		<h:dataTable value="#{taldeaViewMB.taldePartaideakLortu()}"
+			var="partaideak" border="2">
 			<h:column>
 				<f:facet name="header">PARTAIDEAREN IZENA</f:facet>
 				#{partaideak.izena} 
 			</h:column>
 			<h:column>
-			<f:facet name="header">PARTAIDEA IKUSI</f:facet>
-			<h:form >
-				<h:commandButton actionListener="#{taldeaViewMB.klikatutakoTaldekideaGorde(partaideak.username)}" action="partaidea.xhtml" type="submit" value="PARTAIDEA IKUSI" />
-			</h:form>
+				<f:facet name="header">PARTAIDEA IKUSI</f:facet>
+				<h:form>
+					<h:commandButton
+						actionListener="#{taldeaViewMB.klikatutakoTaldekideaGorde(partaideak.username)}"
+						action="partaidea.xhtml" type="submit" value="PARTAIDEA IKUSI" />
+				</h:form>
 			</h:column>
-
-	</h:dataTable>
-	
+		</h:dataTable>
 	</ui:define>
-	</ui:composition>
+</ui:composition>
 </html>
